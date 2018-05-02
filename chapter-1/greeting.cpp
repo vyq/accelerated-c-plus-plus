@@ -8,17 +8,17 @@ int main() {
   string name;
   cin >> name;
 
-  const string greeting = "Hello " + name + "!";
-  const string spaces(greeting.size(), ' ');
-  const string padding = "* " + spaces + " *";
-  const string margin(padding.size(), '*');
+  const string kGreeting = "Hello " + name + "!";
+  const string kSpaces(kGreeting.size(), ' ');
+  const string kPadding = "* " + kSpaces + " *";
+  const string kMargin(kPadding.size(), '*');
 
   cout << endl;
-  cout << margin << endl;
-  cout << padding << endl;
-  cout << "* " << greeting << " *" << endl;
-  cout << padding << endl;
-  cout << margin << endl;
+  cout << kMargin << endl;
+  cout << kPadding << endl;
+  cout << "* " << kGreeting << " *" << endl;
+  cout << kPadding << endl;
+  cout << kMargin << endl;
 
   return 0;
 }
