@@ -9,6 +9,15 @@ Learn C++
 - 0-7: It is a valid program as the comment delimiters are correct
 - 0-8: It is a valid program as the comment syntax is correct
 - 0-9: `int main() {}` is the shortest valid program
+- 1-1: The definitions are valid as `hello` is defined before it is used by `message`
+- 1-2: The definitions are valid as `exclam` is defined before it is used by `message`
+- 1-3: It is a valid program that outputs:
+  ```
+  a string
+  another string
+  ```
+- 1-4: It is a valid program, regardless of changing `}}` to `};}`
+- 1-5: It is not a valid program as `x` in `std::cout << x << std::endl;` is not defined
 
 # to-do
 
