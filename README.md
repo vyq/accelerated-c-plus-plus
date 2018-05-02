@@ -22,7 +22,7 @@ Learn C++
 
 # to-do
 
-- Read chapter 1
+- Read chapter 2
 
 # takeaway
 
