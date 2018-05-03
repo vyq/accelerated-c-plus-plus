@@ -8,10 +8,21 @@ int main() {
   string name;
   cin >> name;
 
+  cout << "Space between greeting and left and right border: ";
+  int padLeftRight;
+  cin >> padLeftRight;
+
+  cout << "Space between greeting and top and bottom border: ";
+  int padTopBottom;
+  cin >> padTopBottom;
+
   const string kGreeting {"Hello " + name + "!"};
-  const int pad {1};
-  const int rows {pad * 2 + 3};
-  const string::size_type columns {kGreeting.size() + pad * 2 + 4};
+  const int rows {padTopBottom * 2 + 3};
+  const string::size_type columns {
+    kGreeting.size() +
+    padLeftRight * 2 +
+    2
+  };
 
   cout << endl;
 
@@ -21,7 +32,7 @@ int main() {
 
     // Invariant: Wrote c characters so far in current row
     while (c != columns) {
-      if (r == pad + 1 && c == pad + 2) {
+      if (r == padTopBottom + 1 && c == padLeftRight + 1) {
         cout << kGreeting;
         c += kGreeting.size();
       } else {
