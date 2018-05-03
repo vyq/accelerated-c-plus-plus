@@ -30,3 +30,5 @@ Learn C++
 - `<<` is [left-associative](https://en.wikipedia.org/wiki/Operator_associativity)
 - Reading from standard input [flushes](http://www.cplusplus.com/reference/ostream/flush-free/) the output buffer
 - `std::cin >> v` reads non-whitespace characters from standard input into `v`
+- Use `{}` when initializing variables to prevent conversions that lose information
+- `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
