@@ -33,3 +33,4 @@ Learn C++
 - `std::cin >> v` reads non-whitespace characters from standard input into `v`
 - Use `{}` when initializing variables to prevent conversions that lose information
 - `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
+- A loop [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a loop
