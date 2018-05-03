@@ -11,7 +11,7 @@ int main() {
   const string kGreeting {"Hello " + name + "!"};
   const int pad {1};
   const int rows {pad * 2 + 3};
-  const string::size_type columns {kGreeting.size() + 2};
+  const string::size_type columns {kGreeting.size() + pad * 2 + 4};
 
   cout << endl;
 
@@ -21,7 +21,7 @@ int main() {
 
     // Invariant: Wrote c characters so far in current row
     while (c != columns) {
-      if (r == pad + 1 && c == pad) {
+      if (r == pad + 1 && c == pad + 2) {
         cout << kGreeting;
         c += kGreeting.size();
       } else {
