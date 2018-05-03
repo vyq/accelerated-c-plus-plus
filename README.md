@@ -34,3 +34,5 @@ Learn C++
 - Use `{}` when initializing variables to prevent conversions that lose information
 - `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
 - A loop [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a loop
+- `std::string::size_type` is a type used to store the size of a [string](http://www.cplusplus.com/reference/string/string/)
+
