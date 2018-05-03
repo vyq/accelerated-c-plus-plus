@@ -19,6 +19,19 @@ Learn C++
 - 1-4: It is a valid program, regardless of changing `}}` to `};}`
 - 1-5: It is not a valid program as `x` in `std::cout << x << std::endl;` is not defined
 - 1-6: It stores the second name in the buffer, assigns it to `name` when `std::cin >> name` is executed again, and prints the second name to standard output
+- 2-6: The code outputs:
+  ```
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  ```
 
 # to-do
 
