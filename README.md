@@ -32,7 +32,7 @@ Learn C++
   9
   10
   ```
-- 2-10: `std::` is used to specify that the `cout` object and `endl` function are referenced from the [C++ Standard Library](https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library)
+- 2-10: `std::` specifies that the `cout` object and `endl` function are referenced from the [C++ Standard Library](https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library)
 
 # to-do
 
