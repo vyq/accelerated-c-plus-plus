@@ -30,18 +30,15 @@ int main() {
   for (int r = 0; r != rows; ++r) {
     string::size_type c = 0;
 
-    // Invariant: Wrote c characters so far in current row
-    while (c != columns) {
-      if (r == padTopBottom + 1 && c == padLeftRight + 1) {
-        cout << kGreeting;
-        c += kGreeting.size();
-      } else {
-        if (r == 0 || r == rows - 1 || c == 0 || c == columns - 1)
-          cout << "*";
-        else
-          cout << " ";
-        ++c;
-      }
+    if (r == padTopBottom + 1) {
+      const string padding(padLeftRight, ' ');
+      cout << "*" << padding << kGreeting << padding << "*";
+    } else if (r == 0 || r == rows - 1) {
+      const string border(columns, '*');
+      cout << border;
+    } else {
+      const string padding(columns - 2, ' ');
+      cout << "*" << padding << "*";
     }
 
     cout << endl;
