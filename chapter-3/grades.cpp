@@ -27,7 +27,7 @@ int main() {
   }
 
   typedef vector<double>::size_type vector_size;
-  vector_size size = homework.size();
+  vector_size size {homework.size()};
 
   if (size == 0) {
     cout << "Please input homework grades.";
@@ -37,13 +37,14 @@ int main() {
 
   sort(homework.begin(), homework.end());
 
-  vector_size middle = size / 2;
-  double median;
-  median = size % 2 == 0 ?
+  vector_size middle {size / 2};
+  double median {
+    size % 2 == 0 ?
     (homework[middle] + homework[middle - 1]) / 2 :
-    homework[middle];
+    homework[middle]
+  };
 
-  streamsize precision = cout.precision();
+  streamsize precision {cout.precision()};
   cout <<
     "Final grade: " <<
     setprecision(3) <<
