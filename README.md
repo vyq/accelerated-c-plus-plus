@@ -33,6 +33,19 @@ Learn C++
   10
   ```
 - 2-10: `std::` specifies that the `cout` object and `endl` function are referenced from the [C++ Standard Library](https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library)
+- 3-1: All values in an ordered range are required for computing the [median](https://en.wikipedia.org/wiki/Median). If we discard a value before reading all values, the median may be a value that we discarded. Example:
+  ```cpp
+  vector<int> v {2, 3};
+
+  // Discard 2
+  v.erase(v.begin());
+
+  v.push_back(1);
+  sort(v.begin(), v.end());
+
+  // Median of {1, 2, 3} is 2, though 2 has been discarded
+  copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+  ```
 
 # to-do
 
