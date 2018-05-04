@@ -46,6 +46,7 @@ Learn C++
   // Median of {1, 2, 3} is 2, though 2 has been discarded
   copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
   ```
+- 3-6: g++ shows a division by zero warning at compile time and throws a floating point exception at run time
 
 # to-do
 
