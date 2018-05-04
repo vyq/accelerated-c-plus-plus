@@ -11,7 +11,7 @@ int main() {
   cout << "Square" << endl << endl;
 
   // Invariant: Printed i rows so far
-  for (int i = 0; i < kSquareLength; ++i) {
+  for (int i = 0; i != kSquareLength; ++i) {
     const string square(kSquareLength, '*');
     cout << square << endl;
   }
@@ -20,7 +20,7 @@ int main() {
   cout << "Rectangle" << endl << endl;
 
   // Invariant: Printed i rows so far
-  for (int i = 0; i < kRectangleLength; ++i) {
+  for (int i = 0; i != kRectangleLength; ++i) {
     const string point(kRectangleWidth, '*');
     cout << point << endl;
   }
@@ -29,7 +29,7 @@ int main() {
   cout << "Triangle" << endl;
 
   // Invariant: Printed i rows so far
-  for (int i = 0; i < kTriangleLength; ++i) {
+  for (int i = 0; i != kTriangleLength; ++i) {
     const string point(i, '*');
 
     cout << point << endl;

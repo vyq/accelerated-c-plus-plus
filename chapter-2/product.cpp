@@ -6,7 +6,7 @@ int main() {
   const int maximum {10};
   const int minimum {1};
 
-  for (int i = minimum; i < maximum; ++i) {
+  for (int i = minimum; i != maximum; ++i) {
     cout << i * i << endl;
   }
 
