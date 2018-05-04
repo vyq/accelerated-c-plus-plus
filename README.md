@@ -50,3 +50,4 @@ Learn C++
 - A loop [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a loop
 - `std::string::size_type` is a type used to store the size of a [string](http://www.cplusplus.com/reference/string/string/)
 - Loop invariants are expressed more clearly using asymmetric ranges, e.g. [0, rows)
+- Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
