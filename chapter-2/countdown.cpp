@@ -6,8 +6,9 @@ int main() {
   const int maximum {10};
   const int minimum {-6};
 
-  for (int i = maximum; i != minimum; --i) {
-    cout << i << endl;
+  // Invariant: Wrote i numbers so far
+  for (int i = 0; i != (maximum - minimum); ++i) {
+    cout << maximum - i << endl;
   }
 
   return 0;
