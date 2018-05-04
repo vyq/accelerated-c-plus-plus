@@ -15,8 +15,13 @@ double ComputeMedian(vector<double> v) {
 
 int main() {
   vector<double> v {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  const double kMedian {ComputeMedian(v)};
+  vector<double> lowerHalf {v.begin(), v.end() - kMedian};
+  vector<double> upperHalf {v.begin() + kMedian, v.end()};
 
-  cout << "Second quartile: " << ComputeMedian(v) << endl;
+  cout << "First quartile: " << ComputeMedian(lowerHalf) << endl;
+  cout << "Second quartile: " << kMedian << endl;
+  cout << "Third quartile: " << ComputeMedian(upperHalf) << endl;
 
   return 0;
 }
