@@ -3,20 +3,20 @@
 
 using namespace std;
 
-int main() {
-  vector<double> evenRange {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
+double ComputeMedian(vector<double> v) {
   typedef vector<double>::size_type vector_size;
-  vector_size size {evenRange.size()};
+  vector_size size {v.size()};
   vector_size middle {size / 2};
 
-  double median {
-    size % 2 == 0 ?
-    (evenRange[middle] + evenRange[middle - 1]) / 2 :
-    evenRange[middle]
-  };
+  return size % 2 == 0 ?
+    (v[middle] + v[middle - 1]) / 2 :
+    v[middle];
+}
 
-  cout << "Second quartile: " << median << endl;
+int main() {
+  vector<double> v {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  cout << "Second quartile: " << ComputeMedian(v) << endl;
 
   return 0;
 }
