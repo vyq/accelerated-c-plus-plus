@@ -21,6 +21,14 @@ int main() {
     cout << "Midterm and final exam grades: ";
     double midterm, final;
     cin >> midterm >> final;
+
+    if (midterm < 0 || midterm > 100 || final < 0 || final > 100) {
+      cout <<
+        "Please input valid midterm and final exam grades." <<
+        endl;
+
+      return 1;
+    }
   
     cout << "Homework grades: ";
     vector<double> homework;
@@ -37,7 +45,7 @@ int main() {
     vector_size size {homework.size()};
   
     if (size == 0) {
-      cout << "Please input homework grades.";
+      cout << "Please input homework grades." << endl;
   
       return 1;
     }
