@@ -63,14 +63,20 @@ int main() {
 
     student_grades[name] = final_grade;
 
-    cout << "Input more student grades? (Yes / No) ";
+    cout << endl;
+    cout << "Input more student grades (Yes / No)?";
     string reply;
     cin >> reply;
-
     cout << endl;
 
-    if (reply == "No")
+    if (reply == "Yes")
+      continue;
+    else if (reply == "No")
       break;
+    else {
+      cout << "Invalid reply. Assume \"No\"" << endl << endl;
+      break;
+    }
   }
 
   // Invariant: Printed all grades read from student_grades so far
