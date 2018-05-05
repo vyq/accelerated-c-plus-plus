@@ -67,3 +67,4 @@ Learn C++
 - Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
 - Different methods for computing [quartiles](https://en.wikipedia.org/wiki/Quartile) yield different results
 - `&` is an address-of operator. Example: `foo = &bar` stores the address of variable `bar` in [pointer](http://www.cplusplus.com/doc/tutorial/pointers/) `foo`
+- `*` is a [dereference operator](https://en.wikipedia.org/wiki/Dereference_operator). Example: `baz = *foo` assigns the value pointed to by `foo` to `baz`
