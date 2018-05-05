@@ -66,4 +66,4 @@ Learn C++
 - Loop invariants are expressed more clearly using asymmetric ranges, e.g. [0, rows)
 - Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
 - Different methods for computing [quartiles](https://en.wikipedia.org/wiki/Quartile) yield different results
-- `&` is an address-of operator, e.g. `foo = &bar` stores the address of variable `bar` in `foo`
+- `&` is an address-of operator, e.g. `foo = &bar` stores the address of variable `bar` in [pointer](http://www.cplusplus.com/doc/tutorial/pointers/) `foo`
