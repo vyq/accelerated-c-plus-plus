@@ -50,15 +50,15 @@ Learn C++
 
 # to-do
 
-- Read page 62 chapter 3 of Accelerated C++
+- Read page 82 chapter 4 of Accelerated C++
 - Read page 42 section 2.2.3 of The C++ Programming Language
 
 # takeaway
 
-- `std::cout << "hello world" << std::endl` writes `hello world` to standard output as a [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+- `std::cout << "hello world" << std::endl` writes `hello world` to the standard output stream as a [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
 - `<<` is [left-associative](https://en.wikipedia.org/wiki/Operator_associativity)
-- Reading from standard input [flushes](http://www.cplusplus.com/reference/ostream/flush-free/) the output buffer
-- `std::cin >> v` reads non-whitespace characters from standard input into `v`
+- Reading from the standard input stream [flushes](http://www.cplusplus.com/reference/ostream/flush-free/) the output buffer
+- `std::cin >> v` reads non-whitespace characters from the standard input stream into `v`
 - Use `{}` when initializing variables to prevent conversions that lose information
 - `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
 - A loop [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a loop
