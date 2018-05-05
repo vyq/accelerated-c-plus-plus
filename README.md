@@ -65,7 +65,7 @@ Learn C++
 - Loop invariants are expressed more clearly using asymmetric ranges, e.g. [0, rows)
 - Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
 - Different methods for computing [quartiles](https://en.wikipedia.org/wiki/Quartile) yield different results
-- A prefix `&` is an address-of operator. Example: `foo = &bar` stores the address of variable `bar` in [pointer](http://www.cplusplus.com/doc/tutorial/pointers/) `foo`
-- A suffix `&` is declarator operator. Example: `for (auto& x: v)` loops through `v` and references each element using `x`
+- A prefix `&` is an address-of operator. Example: `foo = &bar` stores the address of variable `bar` in `foo`
+- A suffix `*` is a declarator operator. Example: `int* foo = &bar` stores the address of integer `bar` in [pointer](http://www.cplusplus.com/doc/tutorial/pointers/) `foo`
 - A prefix `*` is a [dereference operator](https://en.wikipedia.org/wiki/Dereference_operator). Example: `baz = *foo` assigns the value pointed to by `foo` to `baz`
-- A suffix `*` is a declarator operator. Example: `int* foo = &bar` stores the address of integer `bar` in pointer `foo`
+- A suffix `&` is declarator operator. Example: `for (auto& x: v)` loops through `v` and references each element using `x`. Calling by reference is faster than `for (auto x: v)`, which calls by value
