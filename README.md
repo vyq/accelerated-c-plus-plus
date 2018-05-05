@@ -70,3 +70,4 @@ Learn C++
 - A prefix `*` is a [dereference operator](https://en.wikipedia.org/wiki/Dereference_operator). Example: `baz = *foo` assigns the value pointed to by `foo` to `baz`
 - A suffix `&` is declarator operator. Example: `for (auto& x: v)` loops through `v` and references each element using `x`. Calling by reference is faster than `for (auto x: v)` as it avoids the overhead of copying each element when calling by value
 - `nullptr` is a null pointer that represents no object is available
+- A [lvalue](https://en.wikipedia.org/wiki/Value_(computer_science)) is a value that has an address in memory, while a rvalue does not persist beyond the expression that uses it
