@@ -67,4 +67,4 @@ Learn C++
 - Different methods for computing [quartiles](https://en.wikipedia.org/wiki/Quartile) yield different results
 - A prefix `&` is an address-of operator. Example: `foo = &bar` stores the address of variable `bar` in [pointer](http://www.cplusplus.com/doc/tutorial/pointers/) `foo`
 - A suffix `&` is declarator operator. Example: `for (auto& x: v)` loops through `v` and references each element using `x`
-- `*` is a [dereference operator](https://en.wikipedia.org/wiki/Dereference_operator). Example: `baz = *foo` assigns the value pointed to by `foo` to `baz`
+- A prefix `*` is a [dereference operator](https://en.wikipedia.org/wiki/Dereference_operator). Example: `baz = *foo` assigns the value pointed to by `foo` to `baz`
