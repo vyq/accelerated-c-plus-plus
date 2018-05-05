@@ -50,7 +50,7 @@ Learn C++
 
 # to-do
 
-- Read page 82 chapter 4 of Accelerated C++
+- Read page 90 chapter 4.1.4 of Accelerated C++
 - Read page 47 section 2.3 of The C++ Programming Language
 
 # takeaway
