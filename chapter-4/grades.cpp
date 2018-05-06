@@ -8,6 +8,12 @@
 
 using namespace std;
 
+struct Student {                                                        
+  string name;                                                     
+  double midterm, final;                                                
+  vector<double> homework;                                         
+};
+
 double ComputeMedian(vector<double> v);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
