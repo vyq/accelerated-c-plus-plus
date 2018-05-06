@@ -136,6 +136,7 @@ int main() {
     streamsize precision {cout.precision()};
     cout <<
       student.name <<
+      string(longest_name_length - student.name.size(), ' ') <<
       ": " <<
       setprecision(3) <<
       ComputeGrade(student) <<
