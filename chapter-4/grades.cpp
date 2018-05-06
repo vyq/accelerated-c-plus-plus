@@ -37,7 +37,7 @@ double ComputeGrade(
   const vector<double>& homework
 ) {
   if (homework.size() == 0)
-    throw length_error("Homework grades required.");
+    throw length_error("Homework grades not found.");
   
   return ComputeGrade(midterm, final, ComputeMedian(homework));
 }
