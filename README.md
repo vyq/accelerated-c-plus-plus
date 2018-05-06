@@ -47,6 +47,7 @@ Learn C++
   copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
   ```
 - 3-6: g++ shows a division by zero warning at compile time and throws a floating point exception at run time
+- 4-2: The code will not work as the types for both arguments in `max()` need to be the same. Change `int maxlen` to `string:size_type maxlen`
 
 # to-do
 
