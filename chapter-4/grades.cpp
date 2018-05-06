@@ -8,24 +8,9 @@
 
 using namespace std;
 
-double ComputeGrade(double, double, const vector<double>&);
-double ComputeGrade(double, double, double);
 double ComputeMedian(vector<double> v);
-
-double ComputeGrade(
-  double midterm,
-  double final,
-  const vector<double>& homework
-) {
-  if (homework.size() == 0)
-    throw length_error("Homework grades required.");
-  
-  return ComputeGrade(midterm, final, ComputeMedian(homework));
-}
-
-double ComputeGrade(double midterm, double final, double homework) {
-  return 0.2 * midterm + 0.4 * final + 0.4 * homework;
-}
+double ComputeGrade(double, double, double);
+double ComputeGrade(double, double, const vector<double>&);
 
 double ComputeMedian(vector<double> v) {
   typedef vector<double>::size_type vector_size;
@@ -39,6 +24,21 @@ double ComputeMedian(vector<double> v) {
   vector_size middle {size / 2};
 
   return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
+}
+
+double ComputeGrade(double midterm, double final, double homework) {
+  return 0.2 * midterm + 0.4 * final + 0.4 * homework;
+}
+
+double ComputeGrade(
+  double midterm,
+  double final,
+  const vector<double>& homework
+) {
+  if (homework.size() == 0)
+    throw length_error("Homework grades required.");
+  
+  return ComputeGrade(midterm, final, ComputeMedian(homework));
 }
 
 int main() {
