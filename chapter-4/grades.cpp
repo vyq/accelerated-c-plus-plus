@@ -16,11 +16,8 @@ double ComputeMedian(vector<double> v) {
   typedef vector<double>::size_type vector_size;
   vector_size size {v.size()};
 
-  if (size == 0) {
-    cout << "Please input v grades." << endl;
-
-    return 1;
-  }
+  if (size == 0)
+    throw length_error("Cannot compute median of empty vector.");
 
   sort(v.begin(), v.end());
 
