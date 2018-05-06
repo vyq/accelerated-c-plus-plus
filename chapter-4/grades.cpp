@@ -12,6 +12,25 @@ double ComputeGrade(double midterm, double final, double homework) {
   return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 }
 
+double ComputeMedian(vector<double> v) {
+  typedef vector<double>::size_type vector_size;
+  vector_size size {v.size()};
+
+  if (size == 0) {
+    cout << "Please input v grades." << endl;
+
+    return 1;
+  }
+
+  sort(v.begin(), v.end());
+
+  vector_size middle {size / 2};
+
+  return size % 2 == 0 ?
+    (v[middle] + v[middle - 1]) / 2 :
+    v[middle];
+}
+
 int main() {
   map<string, double> student_grades;
 
@@ -45,30 +64,13 @@ int main() {
   
     cin.clear();
 
-    typedef vector<double>::size_type vector_size;
-    vector_size size {homework.size()};
-  
-    if (size == 0) {
-      cout << "Please input homework grades." << endl;
-  
-      return 1;
-    }
-  
-    sort(homework.begin(), homework.end());
-  
-    vector_size middle {size / 2};
-    double median {
-      size % 2 == 0 ?
-      (homework[middle] + homework[middle - 1]) / 2 :
-      homework[middle]
-    };
-
-    double final_grade = ComputeGrade(midterm, final, median);
+    double median {ComputeMedian(homework)};
+    double final_grade {ComputeGrade(midterm, final, median)};
 
     student_grades[name] = final_grade;
 
     cout << endl;
-    cout << "Input more student grades (Yes / No)?";
+    cout << "Input more student grades (Yes / No)? ";
     string reply;
     cin >> reply;
     cout << endl;
