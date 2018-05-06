@@ -14,12 +14,17 @@ struct Student {
   vector<double> homework;                                         
 };
 
+bool Compare(const Student&, const Student&);
 double ComputeMedian(vector<double> v);
 double ComputeGrade(const Student&);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
 istream& Read(istream&, Student&);
 istream& ReadHomework(istream&, vector<double>&);
+
+bool Compare(const Student& x, const Student& y) {
+  return x.name < y.name;
+}
 
 double ComputeMedian(vector<double> v) {
   typedef vector<double>::size_type vector_size;
