@@ -54,7 +54,7 @@ int main() {
   sort(students.begin(), students.end(), Compare);
 
   // Invariant: Printed all grades read from students so far
-  for (auto student: students) {
+  for (auto& student: students) {
     cout <<
       student.name <<
       string(longest_name_length - student.name.size(), ' ') <<
