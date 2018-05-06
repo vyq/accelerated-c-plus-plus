@@ -104,7 +104,10 @@ int main() {
     try {
       students.push_back(student);
 
-      longest_name_length = max(longest_name_length, student.name.size());
+      longest_name_length = max(
+        longest_name_length,
+        student.name.size()
+      );
   
       cout << endl << "Input more student grades (Yes / No)? ";
       string reply;
