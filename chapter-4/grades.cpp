@@ -86,6 +86,7 @@ istream& ReadHomework(istream& is, vector<double>& v) {
 int main() {
   vector<Student> students;
   Student student;
+  string::size_type longest_name_length {0};
   map<string, double> student_grades;
 
   // Invariant: student_grades contains all student grades read so far
@@ -121,6 +122,8 @@ int main() {
   
       student_grades[name] = final_grade;
       students.push_back(student);
+
+      longest_name_length = max(longest_name_length, student.name.size());
   
       cout << endl << "Input more student grades (Yes / No)? ";
       string reply;
