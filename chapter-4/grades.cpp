@@ -142,6 +142,8 @@ int main() {
     }
   }
 
+  sort(students.begin(), students.end(), Compare);
+
   // Invariant: Printed all grades read from student_grades so far
   for (auto student_grade: student_grades) {
     streamsize precision {cout.precision()};
