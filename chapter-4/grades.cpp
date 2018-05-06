@@ -99,9 +99,8 @@ int main() {
 
   // Invariant: students contains all student grades read so far
   while (true) {
-    Read(cin, student);
-
     try {
+      Read(cin, student);
       students.push_back(student);
 
       longest_name_length = max(
@@ -122,8 +121,12 @@ int main() {
         cout << "Invalid reply. Assume \"No\"" << endl << endl;
         break;
       }
-    } catch (length_error) {
-      cout << endl << "Please input grades." << endl;
+    } catch (length_error e) {
+      cout << endl << e.what() << endl;
+
+      return 1;
+    } catch (domain_error e) {
+      cout << endl << e.what() << endl;
 
       return 1;
     }
