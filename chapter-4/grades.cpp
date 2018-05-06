@@ -11,22 +11,9 @@
 
 using namespace std;
 
-struct Student {                                                        
-  string name;                                                     
-  double midterm, final;                                                
-  vector<double> homework;                                         
-};
-
-bool Compare(const Student&, const Student&);
 double ComputeGrade(const Student&);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
-istream& Read(istream&, Student&);
-istream& ReadHomework(istream&, vector<double>&);
-
-bool Compare(const Student& x, const Student& y) {
-  return x.name < y.name;
-}
 
 double ComputeGrade(const Student& s) {
   return ComputeGrade(s.midterm, s.final, s.homework);
@@ -45,39 +32,6 @@ double ComputeGrade(
     throw length_error("Homework grades not found.");
   
   return ComputeGrade(midterm, final, ComputeMedian(homework));
-}
-
-istream& Read(istream& is, Student& s) {
-  cout << "Student name: ";
-  is >> s.name;
-
-  cout << "Midterm and final exam grades: ";
-  is >> s.midterm >> s.final;
-
-  if (s.midterm < 0 || s.midterm > 100 || s.final < 0 || s.final > 100)
-    throw domain_error("Invalid midterm or final exam grades.");
-
-  ReadHomework(is, s.homework);
-
-  return is;
-}
-
-istream& ReadHomework(istream& is, vector<double>& v) {
-  cout << "Homework grades: ";
-
-  if (is) {
-    v.clear();
-
-    double x;
-
-    // Invariant: homework contains all grades read so far
-    while (is >> x)
-      v.push_back(x);
-
-    is.clear();
-  }
-
-  return is;
 }
 
 int main() {
