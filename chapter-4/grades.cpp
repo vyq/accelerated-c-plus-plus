@@ -11,6 +11,7 @@ using namespace std;
 double ComputeMedian(vector<double> v);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
+istream& ReadHomework(istream&, vector<double>&);
 
 double ComputeMedian(vector<double> v) {
   typedef vector<double>::size_type vector_size;
@@ -41,6 +42,22 @@ double ComputeGrade(
   return ComputeGrade(midterm, final, ComputeMedian(homework));
 }
 
+istream& ReadHomework(istream& is, vector<double>& v) {
+  if (is) {
+    v.clear();
+
+    double x;
+
+    // Invariant: homework contains all grades read so far
+    while (is >> x)
+      v.push_back(x);
+
+    is.clear();
+  }
+
+  return is;
+}
+
 int main() {
   map<string, double> student_grades;
 
@@ -65,14 +82,7 @@ int main() {
   
     cout << "Homework grades: ";
     vector<double> homework;
-    double x;
-  
-    // Invariant: homework contains all grades read so far
-    while (cin >> x) {
-      homework.push_back(x);
-    }
-  
-    cin.clear();
+    ReadHomework(cin, homework);
 
     double median {ComputeMedian(homework)};
     double final_grade {ComputeGrade(midterm, final, median)};
