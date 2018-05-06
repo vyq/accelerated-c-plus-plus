@@ -15,8 +15,10 @@ struct Student {
 };
 
 double ComputeMedian(vector<double> v);
+double ComputeGrade(const Student&);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
+istream& Read(istream&, Student&);
 istream& ReadHomework(istream&, vector<double>&);
 
 double ComputeMedian(vector<double> v) {
@@ -33,6 +35,10 @@ double ComputeMedian(vector<double> v) {
   return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
 }
 
+double ComputeGrade(const Student& s) {
+  return ComputeGrade(s.midterm, s.final, s.homework);
+}
+
 double ComputeGrade(double midterm, double final, double homework) {
   return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 }
@@ -46,6 +52,14 @@ double ComputeGrade(
     throw length_error("Homework grades not found.");
   
   return ComputeGrade(midterm, final, ComputeMedian(homework));
+}
+
+istream& Read(istream& is, Student& s) {
+  is >> s.name >> s.midterm >> s.final;
+
+  ReadHomework(is, s.homework);
+
+  return is;
 }
 
 istream& ReadHomework(istream& is, vector<double>& v) {
