@@ -90,8 +90,7 @@ int main() {
   
       student_grades[name] = final_grade;
   
-      cout << endl;
-      cout << "Input more student grades (Yes / No)? ";
+      cout << endl << "Input more student grades (Yes / No)? ";
       string reply;
       cin >> reply;
       cout << endl;
