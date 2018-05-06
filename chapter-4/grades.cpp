@@ -66,13 +66,8 @@ istream& Read(istream& is, Student& s) {
   cout << "Midterm and final exam grades: ";
   is >> s.midterm >> s.final;
 
-  if (
-    s.midterm < 0 ||
-    s.midterm > 100 ||
-    s.final < 0 ||
-    s.final > 100
-  )
-    throw domain_error("Invalid midterm and final exam grades.");
+  if (s.midterm < 0 || s.midterm > 100 || s.final < 0 || s.final > 100)
+    throw domain_error("Invalid midterm or final exam grades.");
 
   ReadHomework(is, s.homework);
 
