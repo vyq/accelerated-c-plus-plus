@@ -136,15 +136,22 @@ int main() {
 
   // Invariant: Printed all grades read from students so far
   for (auto student: students) {
-    streamsize precision {cout.precision()};
     cout <<
       student.name <<
       string(longest_name_length - student.name.size(), ' ') <<
-      ": " <<
-      setprecision(3) <<
+      ": ";
+
+    try {
+      streamsize precision {cout.precision()};
+
+      cout << setprecision(3) <<
       ComputeGrade(student) <<
-      setprecision(precision) <<
-      endl;
+      setprecision(precision);
+    } catch (length_error e) {
+      cout << e.what();
+    }
+
+    cout << endl;
   }
 
   return 0;
