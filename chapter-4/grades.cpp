@@ -3,8 +3,11 @@
 #include <ios>
 #include <iostream>
 #include <map>
+#include <stdexcept>
 #include <string>
 #include <vector>
+#include "median.h"
+#include "student.h"
 
 using namespace std;
 
@@ -15,7 +18,6 @@ struct Student {
 };
 
 bool Compare(const Student&, const Student&);
-double ComputeMedian(vector<double> v);
 double ComputeGrade(const Student&);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const vector<double>&);
@@ -24,20 +26,6 @@ istream& ReadHomework(istream&, vector<double>&);
 
 bool Compare(const Student& x, const Student& y) {
   return x.name < y.name;
-}
-
-double ComputeMedian(vector<double> v) {
-  typedef vector<double>::size_type vector_size;
-  vector_size size {v.size()};
-
-  if (size == 0)
-    throw length_error("Cannot compute median of empty vector.");
-
-  sort(v.begin(), v.end());
-
-  vector_size middle {size / 2};
-
-  return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
 }
 
 double ComputeGrade(const Student& s) {
