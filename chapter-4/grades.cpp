@@ -84,24 +84,30 @@ int main() {
     vector<double> homework;
     ReadHomework(cin, homework);
 
-    double median {ComputeMedian(homework)};
-    double final_grade {ComputeGrade(midterm, final, median)};
+    try {
+      double median {ComputeMedian(homework)};
+      double final_grade {ComputeGrade(midterm, final, median)};
+  
+      student_grades[name] = final_grade;
+  
+      cout << endl;
+      cout << "Input more student grades (Yes / No)? ";
+      string reply;
+      cin >> reply;
+      cout << endl;
+  
+      if (reply == "Yes")
+        continue;
+      else if (reply == "No")
+        break;
+      else {
+        cout << "Invalid reply. Assume \"No\"" << endl << endl;
+        break;
+      }
+    } catch (length_error) {
+      cout << endl << "Please input grades." << endl;
 
-    student_grades[name] = final_grade;
-
-    cout << endl;
-    cout << "Input more student grades (Yes / No)? ";
-    string reply;
-    cin >> reply;
-    cout << endl;
-
-    if (reply == "Yes")
-      continue;
-    else if (reply == "No")
-      break;
-    else {
-      cout << "Invalid reply. Assume \"No\"" << endl << endl;
-      break;
+      return 1;
     }
   }
 
