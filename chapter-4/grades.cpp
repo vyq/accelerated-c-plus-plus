@@ -26,9 +26,7 @@ double ComputeMedian(vector<double> v) {
 
   vector_size middle {size / 2};
 
-  return size % 2 == 0 ?
-    (v[middle] + v[middle - 1]) / 2 :
-    v[middle];
+  return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
 }
 
 int main() {
