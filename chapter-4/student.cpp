@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include "grade.h"
 #include "student.h"
 
 using namespace std;
@@ -12,12 +13,16 @@ istream& Read(istream& is, Student& s) {
   is >> s.name;
 
   cout << "Midterm and final exam grades: ";
-  is >> s.midterm >> s.final;
+  double midterm, final;
+  is >> midterm >> final;
 
-  if (s.midterm < 0 || s.midterm > 100 || s.final < 0 || s.final > 100)
+  if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
     throw domain_error("Invalid midterm or final exam grades.");
 
-  ReadHomework(is, s.homework);
+  vector<double> homework;
+  ReadHomework(is, homework);
+  
+  s.final_grade = ComputeGrade(midterm, final, homework);
 
   return is;
 }
@@ -30,7 +35,7 @@ istream& ReadHomework(istream& is, vector<double>& v) {
 
     double x;
 
-    // Invariant: homework contains all grades read so far
+    // Invariant: v contains all grades read so far
     while (is >> x)
       v.push_back(x);
 

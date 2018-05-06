@@ -6,10 +6,6 @@
 
 using namespace std;
 
-double ComputeGrade(const Student& s) {
-  return ComputeGrade(s.midterm, s.final, s.homework);
-}
-
 double ComputeGrade(double midterm, double final, double homework) {
   return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 }

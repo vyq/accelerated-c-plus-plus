@@ -62,9 +62,8 @@ int main() {
 
     try {
       streamsize precision {cout.precision()};
-
       cout << setprecision(3) <<
-      ComputeGrade(student) <<
+      student.final_grade <<
       setprecision(precision);
     } catch (length_error e) {
       cout << e.what();
