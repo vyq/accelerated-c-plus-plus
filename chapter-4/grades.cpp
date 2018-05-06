@@ -87,23 +87,21 @@ int main() {
   vector<Student> students;
   Student student;
   string::size_type longest_name_length {0};
-  map<string, double> student_grades;
 
   // Invariant: student_grades contains all student grades read so far
   while (true) {
-    cout << "Name: ";
-    string name;
-    cin >> name;
-    student.name = name;
-    cout << "Hello " << name << "!" << endl;
+    cout << "Student name: ";
+    cin >> student.name;
   
     cout << "Midterm and final exam grades: ";
-    double midterm, final;
-    cin >> midterm >> final;
-    student.midterm = midterm;
-    student.final = final; 
+    cin >> student.midterm >> student.final;
 
-    if (midterm < 0 || midterm > 100 || final < 0 || final > 100) {
+    if (
+      student.midterm < 0 ||
+      student.midterm > 100 ||
+      student.final < 0 ||
+      student.final > 100
+    ) {
       cout <<
         "Please input valid midterm and final exam grades." <<
         endl;
@@ -112,15 +110,9 @@ int main() {
     }
   
     cout << "Homework grades: ";
-    vector<double> homework;
-    ReadHomework(cin, homework);
-    student.homework = homework;
+    ReadHomework(cin, student.homework);
 
     try {
-      double median {ComputeMedian(homework)};
-      double final_grade {ComputeGrade(midterm, final, median)};
-  
-      student_grades[name] = final_grade;
       students.push_back(student);
 
       longest_name_length = max(longest_name_length, student.name.size());
@@ -147,14 +139,14 @@ int main() {
 
   sort(students.begin(), students.end(), Compare);
 
-  // Invariant: Printed all grades read from student_grades so far
-  for (auto student_grade: student_grades) {
+  // Invariant: Printed all grades read from students so far
+  for (auto student: students) {
     streamsize precision {cout.precision()};
     cout <<
-      student_grade.first <<
+      student.name <<
       ": " <<
       setprecision(3) <<
-      student_grade.second <<
+      ComputeGrade(student) <<
       setprecision(precision) <<
       endl;
   }
