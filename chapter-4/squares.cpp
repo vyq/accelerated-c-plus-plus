@@ -4,13 +4,12 @@
 using namespace std;
 
 int main() {
-  int upperBound {101};
-
-  cout << "Number" << " | " << "Square" << endl;
+  int upper_bound {1000};
+  string::size_type length {to_string(upper_bound).length()};
 
   // Invariant: Computed i squares so far
-  for (int i = 0; i != upperBound; ++i)
-    cout << setw(6) << i << " | " << i * i << endl;
+  for (int i = 0; i != upper_bound; ++i)
+    cout << setw(length) << i << " | " << i * i << endl;
 
   return 0;
 }
