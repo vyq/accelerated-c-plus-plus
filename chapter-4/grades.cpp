@@ -84,6 +84,8 @@ istream& ReadHomework(istream& is, vector<double>& v) {
 }
 
 int main() {
+  vector<Student> students;
+  Student student;
   map<string, double> student_grades;
 
   // Invariant: student_grades contains all student grades read so far
@@ -91,11 +93,14 @@ int main() {
     cout << "Name: ";
     string name;
     cin >> name;
+    student.name = name;
     cout << "Hello " << name << "!" << endl;
   
     cout << "Midterm and final exam grades: ";
     double midterm, final;
     cin >> midterm >> final;
+    student.midterm = midterm;
+    student.final = final; 
 
     if (midterm < 0 || midterm > 100 || final < 0 || final > 100) {
       cout <<
@@ -108,12 +113,14 @@ int main() {
     cout << "Homework grades: ";
     vector<double> homework;
     ReadHomework(cin, homework);
+    student.homework = homework;
 
     try {
       double median {ComputeMedian(homework)};
       double final_grade {ComputeGrade(midterm, final, median)};
   
       student_grades[name] = final_grade;
+      students.push_back(student);
   
       cout << endl << "Input more student grades (Yes / No)? ";
       string reply;
