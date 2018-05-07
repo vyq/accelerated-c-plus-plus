@@ -9,17 +9,17 @@ bool Compare(const Student& x, const Student& y) {
 }
 
 vector<Student> GetFailStudents(vector<Student>& s) {
-  vector<Student> pass, fail;
+  vector<Student> fail;
+  vector<Student>::size_type i = 0;
 
   // Invariant: Processed i students so far
-  for (vector<Student>::size_type i = 0; i != s.size(); ++i) {
-    if (IsFailGrade(s[i]))
+  while (i != s.size()) {
+    if (IsFailGrade(s[i])) {
       fail.push_back(s[i]);
-    else
-      pass.push_back(s[i]);
+      s.erase(s.begin() + i);
+    } else
+      ++i;
   }
-
-  s = pass;
 
   return fail;
 }
