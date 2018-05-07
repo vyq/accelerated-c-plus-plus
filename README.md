@@ -105,3 +105,4 @@ Learn C++
   std::cout << pointer->size << std::endl;
   ```
 - An advantage of the `vector` data structure is fast random access. A disadvantage is that it is expensive to add or delete elements that are not at the end of the `vector`
+- `()` is required as `.` has higher precedence than `*` in `(*iterator).name`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`
