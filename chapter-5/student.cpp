@@ -8,6 +8,22 @@ bool Compare(const Student& x, const Student& y) {
   return x.name < y.name;
 }
 
+vector<Student> GetFailStudents(vector<Student>& s) {
+  vector<Student> pass, fail;
+
+  // Invariant: Processed i students so far
+  for (vector<Student>::size_type i = 0; i != s.size(); ++i) {
+    if (IsFailGrade(s[i]))
+      fail.push_back(s[i]);
+    else
+      pass.push_back(s[i]);
+  }
+
+  s = pass;
+
+  return fail;
+}
+
 istream& Read(istream& is, Student& s) {
   cout << "Student name: ";
   is >> s.name;

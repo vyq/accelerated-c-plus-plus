@@ -11,6 +11,7 @@ struct Student {
 };
 
 bool Compare(const Student&, const Student&);
+std::vector<Student> GetFailStudents(std::vector<Student>&);
 std::istream& Read(std::istream&, Student&);
 std::istream& ReadHomework(std::istream&, std::vector<double>&);
 
