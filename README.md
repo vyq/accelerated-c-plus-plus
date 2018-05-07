@@ -104,3 +104,4 @@ Learn C++
   // Outputs 2
   std::cout << pointer->size << std::endl;
   ```
+- An advantage of the `vector` data structure is fast random access. A disadvantage is that it is expensive to add or delete elements that are not at the end of the `vector`
