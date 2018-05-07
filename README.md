@@ -73,3 +73,17 @@ Learn C++
 - `nullptr` is a null pointer that represents no object is available
 - A [lvalue](https://en.wikipedia.org/wiki/Value_(computer_science)) is a value that has an address in memory, while a rvalue does not persist beyond the expression that uses it
 - [`inline`](https://en.wikipedia.org/wiki/Inline_function) suggests that the compiler replace a function call with the function code
+- Use `->` to access struct members through a pointer. Example:
+  ```cpp
+  struct Vector {
+    int size;
+    int* elements;
+  };
+
+  Vector v;
+  v.size = 2;
+  Vector* pointer = &v;
+
+  // Outputs 2
+  std::cout << pointer->size << std::endl;
+  ```
