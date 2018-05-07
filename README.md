@@ -48,6 +48,23 @@ Learn C++
   ```
 - 3-6: g++ shows a division by zero warning at compile time and throws a floating point exception at run time
 - 4-2: The code will not work as the types for both arguments in `max()` need to be the same. Change `int maxlen` to `string:size_type maxlen`
+- 4-8: The return type of `f()` is an array. Example:
+  ```cpp
+  int* f() {
+    return new int[2] {1, 2};
+  }
+
+  int main() {
+    int n = 0;
+    
+    double d = f()[n];
+
+    // Outputs 1
+    std::cout << d << std::endl;
+
+    return 0;
+  }
+  ```
 
 # to-do
 
