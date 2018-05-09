@@ -2,6 +2,7 @@
 #define STUDENT
 
 #include <iostream>
+#include <list>
 #include <string>
 #include <vector>
 
@@ -11,7 +12,7 @@ struct Student {
 };
 
 bool Compare(const Student&, const Student&);
-std::vector<Student> GetFailStudents(std::vector<Student>&);
+std::list<Student> GetFailStudents(std::list<Student>&);
 std::istream& Read(std::istream&, Student&);
 std::istream& ReadHomework(std::istream&, std::vector<double>&);
 
