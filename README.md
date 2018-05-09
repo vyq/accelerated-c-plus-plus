@@ -107,3 +107,4 @@ Learn C++
 - An advantage of the `vector` data structure is fast random access. A disadvantage is that it is expensive to add or delete elements that are not at the end of the `vector`
 - `()` is required as `.` has higher precedence than `*` in `(*iterator).name`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
 - `iterator = vector.erase(iterator)` invalidates all iterators after the element that was erased and makes `iterator` refer to the element after the erasure
+- `vector.push_back(element)` invalidates all iterators referring to `vector`
