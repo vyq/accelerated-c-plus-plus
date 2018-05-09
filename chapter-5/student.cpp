@@ -10,15 +10,15 @@ bool Compare(const Student& x, const Student& y) {
 
 vector<Student> GetFailStudents(vector<Student>& s) {
   vector<Student> fail;
-  vector<Student>::size_type i = 0;
+  vector<Student>::iterator iterator = s.begin();
 
-  // Invariant: Processed i students so far
-  while (i != s.size()) {
-    if (IsFailGrade(s[i])) {
-      fail.push_back(s[i]);
-      s.erase(s.begin() + i);
+  // Invariant: Processed iterator students so far
+  while (iterator != s.end()) {
+    if (IsFailGrade(*iterator)) {
+      fail.push_back(*iterator);
+      iterator = s.erase(iterator);
     } else
-      ++i;
+      ++iterator;
   }
 
   return fail;
