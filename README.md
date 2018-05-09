@@ -68,7 +68,7 @@ Learn C++
 
 # to-do
 
-- Read page 121 chapter 5.3 of Accelerated C++
+- Read page 124 chapter 5.4 of Accelerated C++
 - Read page 48 section 2.3.2 of The C++ Programming Language
 
 # takeaway
