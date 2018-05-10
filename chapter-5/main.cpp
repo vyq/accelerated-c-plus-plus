@@ -2,17 +2,17 @@
 #include <iomanip>
 #include <ios>
 #include <iostream>
+#include <list>
 #include <map>
 #include <stdexcept>
 #include <string>
-#include <vector>
 #include "grade.h"
 #include "student.h"
 
 using namespace std;
 
 int main() {
-  vector<Student> students;
+  list<Student> students;
   Student student;
   string::size_type longest_name_length {0};
 
@@ -51,7 +51,7 @@ int main() {
     }
   }
 
-  sort(students.begin(), students.end(), Compare);
+  students.sort(Compare);
 
   // Invariant: Printed all grades read from students so far
   for (auto& student: students) {
