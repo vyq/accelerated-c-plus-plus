@@ -14,6 +14,27 @@ string::size_type GetLongestLength(const vector<string>& v) {
   return length;
 }
 
+vector<string> DrawGreeting(const vector<string>& v) {
+  vector<string> items;
+  string::size_type length = GetLongestLength(v);
+  string border(length + 4, '*');
+
+  items.push_back(border);
+
+  // Invariant: Processed i words in v so far
+  for (vector<string>::size_type i = 0; i != v.size(); ++i) {
+    items.push_back(
+      "* " +
+      v[i] +
+      string(length - v[i].size(), ' ') +
+      " *");
+  }
+
+  items.push_back(border);
+
+  return items;
+}
+
 int main() {
   cout << "Name: ";
   string name;
