@@ -66,11 +66,6 @@ Learn C++
   }
   ```
 
-# to-do
-
-- Read page 134 chapter 5.8.1 of Accelerated C++
-- Read page 48 section 2.3.2 of The C++ Programming Language
-
 # takeaway
 
 - `std::cout << "hello world" << std::endl` writes `hello world` to the standard output stream as a [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
@@ -108,3 +103,8 @@ Learn C++
 - `()` is required as `.` has higher precedence than `*` in `(*iterator).name`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
 - `iterator = vector.erase(iterator)` invalidates all iterators after the element that was erased and makes `iterator` refer to the element after the erasure
 - `vector.push_back(element)` invalidates all iterators referring to `vector`
+
+# to-do
+
+- Read page 134 chapter 5.8.1 of Accelerated C++
+- Read page 48 section 2.3.2 of The C++ Programming Language
