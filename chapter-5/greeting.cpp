@@ -88,38 +88,36 @@ int main() {
   cin >> padTopBottom;
 
   const vector<string> kGreeting {Split(s)};
-  const int rows {padTopBottom * 2 + 3};
+  const int rows {padTopBottom * 2 + 2 + kGreeting.size()};
   const string::size_type columns {
-    kGreeting.size() +
+    GetLongestLength(kGreeting) +
     padLeftRight * 2 +
     2
   };
 
   cout << endl;
 
-  // Invariant: Wrote r rows so far
-  for (int r = 0; r != rows; ++r) {
-    string::size_type c = 0;
+  const string border(columns, '*');
+  const string padding(columns - 2, ' ');
+  const string padding_side(padLeftRight, ' ');
+  cout << border << endl;
 
-    if (r == padTopBottom + 1) {
-      const string padding(padLeftRight, ' ');
+  // Invariant: Wrote i rows so far
+  for (int i = 0; i != padTopBottom; ++i)
+    cout << "*" << padding << "*" << endl;
 
-      for (
-        vector<string>::const_iterator i = kGreeting.begin();
-        i != kGreeting.end();
-        ++i
-      )
-        cout << "*" << padding << *i << padding << "*";
-    } else if (r == 0 || r == rows - 1) {
-      const string border(columns, '*');
-      cout << border;
-    } else {
-      const string padding(columns - 2, ' ');
-      cout << "*" << padding << "*";
-    }
+  for (
+    vector<string>::const_iterator i = kGreeting.begin();
+    i != kGreeting.end();
+    ++i
+  )
+    cout << "*" << padding_side << *i << padding_side << "*" << endl;
 
-    cout << endl;
-  }
+  // Invariant: Wrote i rows so far
+  for (int i = 0; i != padTopBottom; ++i)
+    cout << "*" << padding << "*" << endl;
+
+  cout << border << endl;
 
   return 0;
 }
