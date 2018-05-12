@@ -48,7 +48,8 @@ void DrawGreeting(
       v[i] +
       string(length - v[i].size(), ' ') +
       padding_side +
-      "*");
+      "*"
+    );
   }
 
   SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
@@ -111,7 +112,8 @@ int main() {
   
   cout << endl;
 
-  DrawGreeting(Split(s), space_left_right, space_top_bottom);
+  const vector<string> kGreeting {Split(s)};
+  DrawGreeting(kGreeting, space_left_right, space_top_bottom);
   
   return 0;
 }
