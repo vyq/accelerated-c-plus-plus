@@ -16,29 +16,25 @@ int main() {
 
   // Invariant: Stored all segments read so far
   while (getline(input, s, '\n')) {
-    vector<string> v {Split(s)};
+    vector<string> row {Split(s)};
     vector<string>::size_type r = 0;
     length = max(length, s.size());
 
     // Invariant: Made r rotations so far
-    while (r != v.size()) {
-      if (r == 0) {
-        items[s] = " ";
-      } else {
-        vector<string> key(v.begin() + r, v.end());
-        vector<string> value(v.begin(), v.begin() + r);
-        string k, v;
+    while (r != row.size()) {
+      vector<string> key(row.begin() + r, row.end());
+      vector<string> value(row.begin(), row.begin() + r);
+      string k, v;
 
-        // Invariant: Stored all references read so far
-        for (auto& i: key)
-          k += i + " ";
+      // Invariant: Stored all references read so far
+      for (auto& i: key)
+        k += i + " ";
 
-        // Invariant: Stored all references read so far
-        for (auto& i: value)
-          v += i + " ";
+      // Invariant: Stored all references read so far
+      for (auto& i: value)
+        v += i + " ";
 
-        items[k] = v;
-      }
+      items[k] = v;
 
       ++r;
     }
