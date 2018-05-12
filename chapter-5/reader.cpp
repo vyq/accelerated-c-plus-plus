@@ -29,6 +29,7 @@ int main() {
       " " <<
       final;
 
+    // Invariant: Wrote all homework read so far
     for (auto& i: homework)
       cout << " " << i;
 
