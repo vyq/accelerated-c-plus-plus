@@ -21,6 +21,19 @@ int main() {
     while (r != v.size()) {
       if (r == 0) {
         items[s] = " ";
+        cout << s << ": " << " " << endl;
+      } else {
+        vector<string> key(v.begin(), v.begin() + r);
+        vector<string> value(v.begin() + r, v.end());
+        string k, v;
+
+        for (auto& i: key)
+          k += i + " ";
+
+        for (auto& i: value)
+          v += i + " ";
+
+        cout << k << ": " << v << endl;
       }
 
       ++r;
