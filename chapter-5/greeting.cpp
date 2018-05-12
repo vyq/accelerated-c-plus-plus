@@ -21,10 +21,21 @@ vector<string> DrawGreeting(
   int space_top_bottom
 ) {
   vector<string> items;
+  const string::size_type columns {
+    GetLongestLength(v) +
+    space_left_right * 2 +
+    2
+  };
+  const string border(columns, '*');
+  const string padding_top_bottom(columns - 2, ' ');
+  const string padding_side(space_left_right, ' ');
   string::size_type length = GetLongestLength(v);
-  string border(length + 4, '*');
 
   items.push_back(border);
+
+  // Invariant: Wrote i rows so far
+  for (int i = 0; i != space_top_bottom; ++i)
+    items.push_back("*" + padding_top_bottom + "*");
 
   // Invariant: Processed i words in v so far
   for (vector<string>::size_type i = 0; i != v.size(); ++i) {
@@ -35,7 +46,14 @@ vector<string> DrawGreeting(
       " *");
   }
 
+  // Invariant: Wrote i rows so far
+  for (int i = 0; i != space_top_bottom; ++i)
+    items.push_back("*" + padding_top_bottom + "*");
+
   items.push_back(border);
+
+  for (auto& item: items)
+    cout << item << endl;
 
   return items;
 }
@@ -90,40 +108,10 @@ int main() {
   cout << "Space between greeting and top and bottom border: ";
   int space_top_bottom;
   cin >> space_top_bottom;
-
-  vector<string> kGreeting {Split(s)};
-  const string::size_type columns {
-    GetLongestLength(kGreeting) +
-    space_left_right * 2 +
-    2
-  };
-
+  
   cout << endl;
 
-  const string border(columns, '*');
-  const string padding_top_bottom(columns - 2, ' ');
-  const string padding_side(space_left_right, ' ');
-
-  cout << border << endl;
-
-  // Invariant: Wrote i rows so far
-  for (int i = 0; i != space_top_bottom; ++i)
-    cout << "*" << padding_top_bottom << "*" << endl;
-
-  DrawGreeting(kGreeting, space_left_right, space_top_bottom);
-  // Invariant: Wrote i elements in kGreeting so far
-  for (
-    vector<string>::const_iterator i = kGreeting.begin();
-    i != kGreeting.end();
-    ++i
-  )
-    cout << "*" << padding_side << *i << padding_side << "*" << endl;
-
-  // Invariant: Wrote i rows so far
-  for (int i = 0; i != space_top_bottom; ++i)
-    cout << "*" << padding_top_bottom << "*" << endl;
-
-  cout << border << endl;
-
+  DrawGreeting(Split(s), space_left_right, space_top_bottom);
+  
   return 0;
 }
