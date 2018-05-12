@@ -110,7 +110,7 @@ int main() {
     i != kGreeting.end();
     ++i
   )
-    cout << "*" << padding_side << *i << padding_side << "*";
+    cout << "*" << padding_side << *i << padding_side << "*" << endl;
 
   // Invariant: Wrote i rows so far
   for (int i = 0; i != padTopBottom; ++i)
