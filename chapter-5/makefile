@@ -1,11 +1,12 @@
 compiler = g++
 standard = -std=c++1z
-flags = $(compiler) $(standard)
+output = -o
+flags = $(compiler) $(standard) $(output)
 
 all: greeting main
 
 main:
-	$(flags) main.cpp student.cpp grade.cpp median.cpp
+	$(flags) main main.cpp student.cpp grade.cpp median.cpp
 
 greeting:
-	$(flags) greeting.cpp
+	$(flags) greeting greeting.cpp
