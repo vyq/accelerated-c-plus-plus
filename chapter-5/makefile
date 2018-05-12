@@ -2,7 +2,7 @@ compiler = g++
 standard = -std=c++1z
 flags = $(compiler) $(standard)
 
-all: main greeting
+all: greeting main
 
 main:
 	$(flags) main.cpp student.cpp grade.cpp median.cpp
