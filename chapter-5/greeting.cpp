@@ -35,6 +35,16 @@ vector<string> DrawGreeting(const vector<string>& v) {
   return items;
 }
 
+vector<string> ConcatenateVertically(
+  const vector<string>& top,
+  const vector<string>& bottom
+) {
+  vector<string> items = top;
+  items.insert(items.end(), bottom.begin(), bottom.end());
+
+  return items;
+}
+
 int main() {
   cout << "Name: ";
   string name;
