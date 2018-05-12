@@ -3,7 +3,7 @@ standard = -std=c++1z
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: clean main greeting
+all: clean main greeting split
 
 clean:
 	rm *.out
@@ -13,3 +13,6 @@ main:
 
 greeting:
 	$(flags) greeting.out greeting.cpp
+
+split:
+	$(flags) split.out split.cpp
