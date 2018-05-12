@@ -26,13 +26,21 @@ int main() {
       vector<string> value(row.begin(), row.begin() + r);
       string k, v;
 
-      // Invariant: Stored all references read so far
-      for (auto& i: key)
-        k += i + " ";
+      // Invariant: Processed i words so far
+      for (vector<string>::size_type i = 0; i != key.size(); ++i) {
+        k += key[i];
 
-      // Invariant: Stored all references read so far
-      for (auto& i: value)
-        v += i + " ";
+        if (i + 1 != key.size())
+          k += " ";
+      }
+
+      // Invariant: Processed i words so far
+      for (vector<string>::size_type i = 0; i != value.size(); ++i) {
+        v += value[i];
+
+        if (i + 1 != value.size())
+          v += " ";
+      }
 
       items[k] = v;
 
@@ -42,7 +50,7 @@ int main() {
 
   // Invariant: Wrote all references read so far
   for (auto& item: items)
-    cout << setw(length) << item.second << "|" << item.first << endl;
+    cout << setw(length) << item.second << " | " << item.first << endl;
 
   return 0;
 }
