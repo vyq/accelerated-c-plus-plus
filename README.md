@@ -106,5 +106,5 @@ Learn C++
 
 # to-do
 
-- Read page 143 of Accelerated C++
+- Read page 143 exercise 5-1 of Accelerated C++
 - Read page 48 section 2.3.2 of The C++ Programming Language
