@@ -3,7 +3,7 @@ standard = -std=c++1z
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: clean main greeting split permuted_index
+all: clean main greeting split permuted_index reader
 
 clean:
 	rm *.out
@@ -19,3 +19,6 @@ split:
 
 permuted_index:
 	$(flags) permuted_index.out permuted_index.cpp split.cpp
+
+reader:
+	$(flags) reader.out reader.cpp split.cpp
