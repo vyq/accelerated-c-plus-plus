@@ -99,12 +99,14 @@ int main() {
   const string border(columns, '*');
   const string padding(columns - 2, ' ');
   const string padding_side(padLeftRight, ' ');
+
   cout << border << endl;
 
   // Invariant: Wrote i rows so far
   for (int i = 0; i != padTopBottom; ++i)
     cout << "*" << padding << "*" << endl;
 
+  // Invariant: Wrote i elements in kGreeting so far
   for (
     vector<string>::const_iterator i = kGreeting.begin();
     i != kGreeting.end();
