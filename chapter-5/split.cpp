@@ -19,7 +19,7 @@ vector<string> Split(const string& s) {
     string_size j {i};
 
     // Invariant: No whitespace characters in [original j, current j)
-    while (j != s.size() && !isspace(s[i]))
+    while (j != s.size() && !isspace(s[j]))
       ++j;
 
     if (i != j) {
