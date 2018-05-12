@@ -6,10 +6,10 @@ flags = $(compiler) $(standard) $(output)
 all: clean main greeting
 
 clean:
-	rm main greeting
+	rm *.out
 
 main:
-	$(flags) main main.cpp student.cpp grade.cpp median.cpp
+	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp
 
 greeting:
-	$(flags) greeting greeting.cpp
+	$(flags) greeting.out greeting.cpp
