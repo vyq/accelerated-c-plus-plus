@@ -15,27 +15,30 @@ string::size_type GetLongestLength(const vector<string>& v) {
   return length;
 }
 
+void SetPaddingTopBottom(vector<string>& v, int s, string p) {
+  // Invariant: Wrote i rows so far
+  for (int i = 0; i != s; ++i)
+    v.push_back("*" + p + "*");
+}
+
 void DrawGreeting(
   const vector<string>& v,
   int space_left_right,
   int space_top_bottom
 ) {
   vector<string> items;
+  string::size_type length = GetLongestLength(v);
   const string::size_type columns {
-    GetLongestLength(v) +
+    length +
     space_left_right * 2 +
     2
   };
   const string border(columns, '*');
   const string padding_top_bottom(columns - 2, ' ');
   const string padding_side(space_left_right, ' ');
-  string::size_type length = GetLongestLength(v);
 
   items.push_back(border);
-
-  // Invariant: Wrote i rows so far
-  for (int i = 0; i != space_top_bottom; ++i)
-    items.push_back("*" + padding_top_bottom + "*");
+  SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
 
   // Invariant: Processed i words in v so far
   for (vector<string>::size_type i = 0; i != v.size(); ++i) {
@@ -48,10 +51,7 @@ void DrawGreeting(
       "*");
   }
 
-  // Invariant: Wrote i rows so far
-  for (int i = 0; i != space_top_bottom; ++i)
-    items.push_back("*" + padding_top_bottom + "*");
-
+  SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
   items.push_back(border);
 
   for (auto& item: items)
