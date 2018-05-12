@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "split.h"
 
 using namespace std;
 
@@ -74,9 +75,9 @@ vector<string> ConcatenateHorizontally(
 }
 
 int main() {
-  cout << "Name: ";
-  string name;
-  cin >> name;
+  cout << "Input greeting: ";
+  string s;
+  getline(cin, s);
 
   cout << "Space between greeting and left and right border: ";
   int padLeftRight;
@@ -86,7 +87,7 @@ int main() {
   int padTopBottom;
   cin >> padTopBottom;
 
-  const string kGreeting {"Hello " + name + "!"};
+  const vector<string> kGreeting {Split(s)};
   const int rows {padTopBottom * 2 + 3};
   const string::size_type columns {
     kGreeting.size() +
@@ -102,7 +103,13 @@ int main() {
 
     if (r == padTopBottom + 1) {
       const string padding(padLeftRight, ' ');
-      cout << "*" << padding << kGreeting << padding << "*";
+
+      for (
+        vector<string>::const_iterator i = kGreeting.begin();
+        i != kGreeting.end();
+        ++i
+      )
+        cout << "*" << padding << *i << padding << "*";
     } else if (r == 0 || r == rows - 1) {
       const string border(columns, '*');
       cout << border;
