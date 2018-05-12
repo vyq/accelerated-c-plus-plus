@@ -52,9 +52,33 @@ int main() {
   }
 
   students.sort(Compare);
+  list<Student> fail_students {GetFailStudents(students)};
+
+  cout << "Pass students" << endl;
 
   // Invariant: Printed all grades read from students so far
   for (auto& student: students) {
+    cout <<
+      student.name <<
+      string(longest_name_length - student.name.size(), ' ') <<
+      ": ";
+
+    try {
+      streamsize precision {cout.precision()};
+      cout << setprecision(3) <<
+      student.final_grade <<
+      setprecision(precision);
+    } catch (length_error e) {
+      cout << e.what();
+    }
+
+    cout << endl;
+  }
+
+  cout << endl << "Fail students" << endl;
+
+  // Invariant: Printed all grades read from fail_students so far
+  for (auto& student: fail_students) {
     cout <<
       student.name <<
       string(longest_name_length - student.name.size(), ' ') <<
