@@ -21,7 +21,7 @@ void SetPaddingTopBottom(vector<string>& v, int s, string p) {
     v.push_back("*" + p + "*");
 }
 
-void DrawGreeting(
+vector<string> DrawGreeting(
   const vector<string>& v,
   int space_left_right,
   int space_top_bottom
@@ -55,8 +55,7 @@ void DrawGreeting(
   SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
   items.push_back(border);
 
-  for (auto& item: items)
-    cout << item << endl;
+  return items;
 }
 
 vector<string> ConcatenateVertically(
@@ -113,7 +112,14 @@ int main() {
   cout << endl;
 
   const vector<string> kGreeting {Split(s)};
-  DrawGreeting(kGreeting, space_left_right, space_top_bottom);
+  vector<string> items {DrawGreeting(
+    kGreeting,
+    space_left_right,
+    space_top_bottom
+  )};
+
+  for (auto& item: items)
+    cout << item << endl;
   
   return 0;
 }
