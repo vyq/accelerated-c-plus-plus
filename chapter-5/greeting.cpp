@@ -120,6 +120,16 @@ int main() {
 
   for (auto& item: items)
     cout << item << endl;
+
+  cout << endl;
+
+  items = ConcatenateVertically(
+    kGreeting,
+    DrawGreeting(kGreeting, space_left_right, space_top_bottom)
+  );
   
+  for (auto& item: items)
+    cout << item << endl;
+
   return 0;
 }
