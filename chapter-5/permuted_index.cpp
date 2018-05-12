@@ -21,24 +21,29 @@ int main() {
     while (r != v.size()) {
       if (r == 0) {
         items[s] = " ";
-        cout << s << ": " << " " << endl;
       } else {
         vector<string> key(v.begin(), v.begin() + r);
         vector<string> value(v.begin() + r, v.end());
         string k, v;
 
+        // Invariant: Stored all references read so far
         for (auto& i: key)
           k += i + " ";
 
+        // Invariant: Stored all references read so far
         for (auto& i: value)
           v += i + " ";
 
-        cout << k << ": " << v << endl;
+        items[k] = v;
       }
 
       ++r;
     }
   }
+
+  // Invariant: Wrote all references read so far
+  for (auto& item: items)
+    cout << item.first << " | " << item.second << endl;
 
   return 0;
 }
