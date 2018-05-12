@@ -15,7 +15,11 @@ string::size_type GetLongestLength(const vector<string>& v) {
   return length;
 }
 
-vector<string> DrawGreeting(const vector<string>& v) {
+vector<string> DrawGreeting(
+  const vector<string>& v,
+  int space_left_right,
+  int space_top_bottom
+) {
   vector<string> items;
   string::size_type length = GetLongestLength(v);
   string border(length + 4, '*');
@@ -80,32 +84,33 @@ int main() {
   getline(cin, s);
 
   cout << "Space between greeting and left and right border: ";
-  int padLeftRight;
-  cin >> padLeftRight;
+  int space_left_right;
+  cin >> space_left_right;
 
   cout << "Space between greeting and top and bottom border: ";
-  int padTopBottom;
-  cin >> padTopBottom;
+  int space_top_bottom;
+  cin >> space_top_bottom;
 
-  const vector<string> kGreeting {Split(s)};
+  vector<string> kGreeting {Split(s)};
   const string::size_type columns {
     GetLongestLength(kGreeting) +
-    padLeftRight * 2 +
+    space_left_right * 2 +
     2
   };
 
   cout << endl;
 
   const string border(columns, '*');
-  const string padding(columns - 2, ' ');
-  const string padding_side(padLeftRight, ' ');
+  const string padding_top_bottom(columns - 2, ' ');
+  const string padding_side(space_left_right, ' ');
 
   cout << border << endl;
 
   // Invariant: Wrote i rows so far
-  for (int i = 0; i != padTopBottom; ++i)
-    cout << "*" << padding << "*" << endl;
+  for (int i = 0; i != space_top_bottom; ++i)
+    cout << "*" << padding_top_bottom << "*" << endl;
 
+  DrawGreeting(kGreeting, space_left_right, space_top_bottom);
   // Invariant: Wrote i elements in kGreeting so far
   for (
     vector<string>::const_iterator i = kGreeting.begin();
@@ -115,8 +120,8 @@ int main() {
     cout << "*" << padding_side << *i << padding_side << "*" << endl;
 
   // Invariant: Wrote i rows so far
-  for (int i = 0; i != padTopBottom; ++i)
-    cout << "*" << padding << "*" << endl;
+  for (int i = 0; i != space_top_bottom; ++i)
+    cout << "*" << padding_top_bottom << "*" << endl;
 
   cout << border << endl;
 
