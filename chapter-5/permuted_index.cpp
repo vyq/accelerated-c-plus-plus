@@ -1,22 +1,31 @@
 #include <iostream>
+#include <map>
 #include <string>
 #include <sstream>
 #include <vector>
+#include "split.h"
 
 using namespace std;
 
 int main() {
-  stringstream ss("The quick brown fox\njumped over the fence");
+  stringstream input("The quick brown fox\njumped over the fence");
   string s;
-  vector<string> v;
+  map<string, string> items;
 
   // Invariant: Stored all segments read so far
-  while (getline(ss, s, '\n'))
-    v.push_back(s);
+  while (getline(input, s, '\n')) {
+    vector<string> v {Split(s)};
+    vector<string>::size_type r = 0;
 
-  // Invariant: Wrote all items referenced so far
-  for (auto& item: v)
-    cout << item << endl;
+    // Invariant: Made r rotations so far
+    while (r != v.size()) {
+      if (r == 0) {
+        items[s] = " ";
+      }
+
+      ++r;
+    }
+  }
 
   return 0;
 }

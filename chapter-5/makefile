@@ -18,4 +18,4 @@ split:
 	$(flags) split_input.out split_input.cpp split.cpp
 
 permuted_index:
-	$(flags) permuted_index.out permuted_index.cpp
+	$(flags) permuted_index.out permuted_index.cpp split.cpp
