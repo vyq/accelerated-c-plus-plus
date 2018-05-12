@@ -1,19 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "concatenate.h"
+#include "length.h"
 #include "split.h"
 
 using namespace std;
-
-string::size_type GetLongestLength(const vector<string>& v) {
-  string::size_type length = 0;
-
-  // Invariant: Processed i strings so far
-  for (vector<string>::size_type i = 0; i != v.size(); ++i)
-    length = max(length, v[i].size());
-
-  return length;
-}
 
 void SetPaddingTopBottom(vector<string>& v, int s, string p) {
   // Invariant: Wrote i rows so far
@@ -58,44 +50,6 @@ vector<string> DrawGreeting(
   return items;
 }
 
-vector<string> ConcatenateVertically(
-  const vector<string>& top,
-  const vector<string>& bottom
-) {
-  vector<string> items = top;
-  items.insert(items.end(), bottom.begin(), bottom.end());
-
-  return items;
-}
-
-vector<string> ConcatenateHorizontally(
-  const vector<string>& left,
-  const vector<string>& right
-) {
-  vector<string> items;
-
-  string::size_type space {GetLongestLength(left) + 1};
-
-  vector<string>::size_type i {0}, j {0};
-
-  // Invariant: Have not seen all rows in left and right
-  while (i != left.size() || j != right.size()) {
-    string s;
-
-    if (i != left.size())
-      s = left[i++];
-
-    s += string(space - s.size(), ' ');
-
-    if (j != right.size())
-      s += right[j++];
-
-    items.push_back(s);
-  }
-
-  return items;
-}
-
 int main() {
   cout << "Input greeting: ";
   string s;
@@ -124,6 +78,16 @@ int main() {
   cout << endl;
 
   items = ConcatenateVertically(
+    kGreeting,
+    DrawGreeting(kGreeting, space_left_right, space_top_bottom)
+  );
+  
+  for (auto& item: items)
+    cout << item << endl;
+
+  cout << endl;
+  
+  items = ConcatenateHorizontally(
     kGreeting,
     DrawGreeting(kGreeting, space_left_right, space_top_bottom)
   );

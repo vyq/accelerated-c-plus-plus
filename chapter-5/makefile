@@ -12,7 +12,7 @@ main:
 	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp
 
 greeting:
-	$(flags) greeting.out greeting.cpp split.cpp
+	$(flags) greeting.out greeting.cpp split.cpp concatenate.cpp length.cpp
 
 split:
 	$(flags) split_input.out split_input.cpp split.cpp
