@@ -15,4 +15,4 @@ greeting:
 	$(flags) greeting.out greeting.cpp
 
 split:
-	$(flags) split.out split.cpp
+	$(flags) split_input.out split_input.cpp split.cpp
