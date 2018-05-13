@@ -103,6 +103,8 @@ Learn C++
 - `()` is required as `.` has higher precedence than `*` in `(*iterator).name`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
 - `iterator = vector.erase(iterator)` invalidates all iterators after the element that was erased and makes `iterator` refer to the element after the erased element
 - `vector.push_back(element)` invalidates all iterators referring to `vector`
+- A [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) is a template for creating objects, providing initial values for [state](https://en.wikipedia.org/wiki/State_(computer_science)), and implementing behaviors
+- A [handle](https://en.wikipedia.org/wiki/Handle_(computing)) is a fixed size reference to dynamically sized resources
 
 # to-do
 
