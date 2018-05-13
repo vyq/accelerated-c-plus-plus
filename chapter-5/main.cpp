@@ -47,7 +47,10 @@ void ReadFromStandardInput(container_type& s, string::size_type& l) {
   }
 }
 
-void ReadFromFile(container_type& s, string::size_type& l) {
+duration<double> ReadFromFile(
+  container_type& s,
+  string::size_type& l
+) {
   high_resolution_clock::time_point start {
     high_resolution_clock::now()
   };
@@ -65,16 +68,14 @@ void ReadFromFile(container_type& s, string::size_type& l) {
     high_resolution_clock::now()
   };
 
-  cout << endl;                                                         
-  auto duration {duration_cast<microseconds>(end - start).count()};     
-  cout << "Read time: " << duration << " microseconds" << endl;
-
+  return duration_cast<duration<double>>(end - start);     
 }
 
 int main() {
   container_type students;
   Student student;
   string::size_type longest_name_length {0};
+  duration<double> read_time;
 
   try {
     cout << "Get student grades from standard input or file?" << endl;
@@ -86,11 +87,11 @@ int main() {
     if (x == 1)
       ReadFromStandardInput(students, longest_name_length);
     else if (x == 2)
-      ReadFromFile(students, longest_name_length);
+      read_time = ReadFromFile(students, longest_name_length);
     else {
       cout << endl << "Invalid input. Assume 1." << endl << endl;
 
-      ReadFromStandardInput(students, longest_name_length);
+      read_time = ReadFromFile(students, longest_name_length);
     }
   } catch (length_error e) {
     cout << endl << e.what() << endl;
@@ -146,6 +147,13 @@ int main() {
 
     cout << endl;
   }
+
+  cout <<
+    endl <<
+    "Read time: " <<
+    read_time.count() <<
+    " seconds" <<
+    endl;
 
   return 0;
 }
