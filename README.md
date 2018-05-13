@@ -65,6 +65,12 @@ Learn C++
     return 0;
   }
   ```
+- 5-2: Execution time (average of 3 runs):
+  |Rows|`vector`|`list`|
+  |-|-|-|
+  |10|||
+  |1000|||
+  |10000|||
 
 # takeaway
 
