@@ -105,6 +105,7 @@ Learn C++
 - `vector.push_back(element)` invalidates all iterators referring to `vector`
 - A [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) is a template for creating objects, providing initial values for [state](https://en.wikipedia.org/wiki/State_(computer_science)), and implementing behaviors
 - A [handle](https://en.wikipedia.org/wiki/Handle_(computing)) is a fixed size reference to dynamically sized resources
+- Use [initialization lists](https://isocpp.org/wiki/faq/ctors#init-lists) when initializing member objects for performance
 
 # to-do
 
