@@ -7,6 +7,7 @@
 #include <map>
 #include <stdexcept>
 #include <string>
+#include <typeinfo>
 #include "grade.h"
 #include "student.h"
 
@@ -96,8 +97,12 @@ int main() {
     return 1;
   }
 
-  //students.sort(Compare);
+  // Sort vector
   sort(students.begin(), students.end(), Compare);
+
+  // Sort list
+  // students.sort(Compare);
+
   container_type fail_students {GetFailStudents(students)};
 
   cout << endl << "Pass students" << endl;
