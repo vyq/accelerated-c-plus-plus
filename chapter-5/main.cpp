@@ -53,7 +53,7 @@ void ReadFromFile(
   string::size_type& l
 ) {
   try {
-    string filename {"grades_10.csv"};
+    string filename {"grades_10000.csv"};
     ifstream file(filename);
     Read(file, s, l);
   } catch (length_error e) {
@@ -98,10 +98,10 @@ int main() {
   }
 
   // Sort vector
-  sort(students.begin(), students.end(), Compare);
+  // sort(students.begin(), students.end(), Compare);
 
   // Sort list
-  // students.sort(Compare);
+  students.sort(Compare);
 
   container_type fail_students {GetFailStudents(students)};
 

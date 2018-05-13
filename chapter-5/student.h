@@ -12,8 +12,8 @@ struct Student {
   double final_grade;
 };
 
-typedef std::vector<Student> container_type;
-//typedef std::list<Student> container_type;
+// typedef std::vector<Student> container_type;
+typedef std::list<Student> container_type;
 
 bool Compare(const Student&, const Student&);
 container_type GetFailStudents(container_type&);
