@@ -1,3 +1,4 @@
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -6,8 +7,12 @@
 #include "split.h"
 
 using namespace std;
+using namespace std::chrono;
 
 int main() {
+  high_resolution_clock::time_point start {
+    high_resolution_clock::now()
+  };
   ifstream file("grades_10.csv");
   string line;
 
@@ -35,6 +40,14 @@ int main() {
 
     cout << endl;
   }
+
+  high_resolution_clock::time_point end {
+    high_resolution_clock::now()
+  };
+
+  cout << endl;
+  auto duration {duration_cast<microseconds>(end - start).count()};
+  cout << "Execution time: " << duration << " microseconds" << endl;
 
   return 0;
 }
