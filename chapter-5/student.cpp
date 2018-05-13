@@ -8,9 +8,9 @@ bool Compare(const Student& x, const Student& y) {
   return x.name < y.name;
 }
 
-list<Student> GetFailStudents(list<Student>& s) {
-  list<Student> fail;
-  list<Student>::iterator iterator = s.begin();
+container_type GetFailStudents(container_type& s) {
+  container_type fail;
+  container_type::iterator iterator = s.begin();
 
   // Invariant: Processed iterator students so far
   while (iterator != s.end()) {

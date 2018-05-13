@@ -11,8 +11,10 @@ struct Student {
   double final_grade;
 };
 
+typedef std::list<Student> container_type;
+
 bool Compare(const Student&, const Student&);
-std::list<Student> GetFailStudents(std::list<Student>&);
+container_type GetFailStudents(container_type&);
 std::istream& Read(std::istream&, Student&);
 std::istream& ReadHomework(std::istream&, std::vector<double>&);
 

@@ -12,7 +12,7 @@
 using namespace std;
 
 int main() {
-  list<Student> students;
+  container_type students;
   Student student;
   string::size_type longest_name_length {0};
 
@@ -52,7 +52,7 @@ int main() {
   }
 
   students.sort(Compare);
-  list<Student> fail_students {GetFailStudents(students)};
+  container_type fail_students {GetFailStudents(students)};
 
   cout << "Pass students" << endl;
 
