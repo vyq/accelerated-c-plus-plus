@@ -6,7 +6,7 @@ flags = $(compiler) $(standard) $(output)
 all: main greeting split permuted_index reader
 
 main:
-	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp
+	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp split.cpp
 
 greeting:
 	$(flags) greeting.out greeting.cpp split.cpp concatenate.cpp length.cpp

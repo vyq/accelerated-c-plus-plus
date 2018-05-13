@@ -11,26 +11,23 @@
 
 using namespace std;
 
-int main() {
-  container_type students;
+void ReadFromStandardInput(container_type& s, string::size_type& l) {
   Student student;
-  string::size_type longest_name_length {0};
 
   // Invariant: students contains all student grades read so far
   while (true) {
     try {
       Read(cin, student);
-      students.push_back(student);
+      s.push_back(student);
 
-      longest_name_length = max(
-        longest_name_length,
+      l = max(
+        l,
         student.name.size()
       );
   
-      cout << endl << "Input more student grades (Yes / No)? ";
+      cout << "Input more student grades (Yes / No)? ";
       string reply;
       cin >> reply;
-      cout << endl;
   
       if (reply == "Yes")
         continue;
@@ -41,20 +38,59 @@ int main() {
         break;
       }
     } catch (length_error e) {
-      cout << endl << e.what() << endl;
-
-      return 1;
+      throw e;
     } catch (domain_error e) {
-      cout << endl << e.what() << endl;
-
-      return 1;
+      throw e;
     }
+  }
+}
+
+void ReadFromFile(container_type& s, string::size_type& l) {
+  try {
+    ifstream file("grades_10.csv");
+    Read(file, s, l);
+  } catch (length_error e) {
+    throw e;
+  } catch (domain_error e) {
+    throw e;
+  }
+}
+
+int main() {
+  container_type students;
+  Student student;
+  string::size_type longest_name_length {0};
+
+  try {
+    cout << "Get student grades from standard input or file?" << endl;
+    cout << "Press 1 for standard input, 2 for file: ";
+
+    int x;
+    cin >> x;
+
+    if (x == 1)
+      ReadFromStandardInput(students, longest_name_length);
+    else if (x == 2)
+      ReadFromFile(students, longest_name_length);
+    else {
+      cout << endl << "Invalid input. Assume 1." << endl << endl;
+
+      ReadFromStandardInput(students, longest_name_length);
+    }
+  } catch (length_error e) {
+    cout << endl << e.what() << endl;
+
+    return 1;
+  } catch (domain_error e) {
+    cout << endl << e.what() << endl;
+
+    return 1;
   }
 
   students.sort(Compare);
   container_type fail_students {GetFailStudents(students)};
 
-  cout << "Pass students" << endl;
+  cout << endl << "Pass students" << endl;
 
   // Invariant: Printed all grades read from students so far
   for (auto& student: students) {

@@ -1,5 +1,8 @@
+#include <fstream>
+#include <iostream>
 #include <stdexcept>
 #include "grade.h"
+#include "split.h"
 #include "student.h"
 
 using namespace std;
@@ -41,6 +44,40 @@ istream& Read(istream& is, Student& s) {
   s.final_grade = ComputeGrade(midterm, final, homework);
 
   return is;
+}
+
+ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
+  Student student;
+  string line;
+
+  while(getline(fs, line)) {
+    vector<string> v {Split(line, ',')};
+
+    student.name = v[0];
+    double midterm {stod(v[1])};
+    double final {stod(v[2])};
+
+    if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
+      throw domain_error("Invalid midterm or final exam grades.");
+
+    vector<double> homework;
+
+    // Invariant: Stored all homework read so far                       
+    for (
+      vector<string>::const_iterator i = v.begin() + 3;
+      i != v.end();
+      ++i
+    )
+      homework.push_back(stod(*i));                                     
+  
+    student.final_grade = ComputeGrade(midterm, final, homework);
+
+    s.push_back(student);
+
+    l = max(l, student.name.size());
+  }
+
+  return fs;
 }
 
 istream& ReadHomework(istream& is, vector<double>& v) {
