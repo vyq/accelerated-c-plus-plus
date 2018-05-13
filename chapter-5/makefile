@@ -3,10 +3,7 @@ standard = -std=c++1z
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: clean main greeting split permuted_index reader
-
-clean:
-	rm *.out
+all: main greeting split permuted_index reader
 
 main:
 	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp
