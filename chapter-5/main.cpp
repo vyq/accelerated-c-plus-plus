@@ -47,35 +47,26 @@ void ReadFromStandardInput(container_type& s, string::size_type& l) {
   }
 }
 
-duration<double> ReadFromFile(
+void ReadFromFile(
   container_type& s,
   string::size_type& l
 ) {
-  high_resolution_clock::time_point start {
-    high_resolution_clock::now()
-  };
-
   try {
-    ifstream file("grades_10.csv");
+    string filename {"grades_10.csv"};
+    ifstream file(filename);
     Read(file, s, l);
   } catch (length_error e) {
     throw e;
   } catch (domain_error e) {
     throw e;
   }
-
-  high_resolution_clock::time_point end {
-    high_resolution_clock::now()
-  };
-
-  return duration_cast<duration<double>>(end - start);     
 }
 
 int main() {
   container_type students;
   Student student;
   string::size_type longest_name_length {0};
-  duration<double> read_time;
+  high_resolution_clock::time_point start;
 
   try {
     cout << "Get student grades from standard input or file?" << endl;
@@ -84,14 +75,16 @@ int main() {
     int x;
     cin >> x;
 
+    start = high_resolution_clock::now();
+
     if (x == 1)
       ReadFromStandardInput(students, longest_name_length);
     else if (x == 2)
-      read_time = ReadFromFile(students, longest_name_length);
+      ReadFromFile(students, longest_name_length);
     else {
-      cout << endl << "Invalid input. Assume 1." << endl << endl;
+      cout << endl << "Invalid input. Assume 2." << endl << endl;
 
-      read_time = ReadFromFile(students, longest_name_length);
+      ReadFromFile(students, longest_name_length);
     }
   } catch (length_error e) {
     cout << endl << e.what() << endl;
@@ -103,7 +96,8 @@ int main() {
     return 1;
   }
 
-  students.sort(Compare);
+  //students.sort(Compare);
+  sort(students.begin(), students.end(), Compare);
   container_type fail_students {GetFailStudents(students)};
 
   cout << endl << "Pass students" << endl;
@@ -148,10 +142,14 @@ int main() {
     cout << endl;
   }
 
+  high_resolution_clock::time_point end {
+    high_resolution_clock::now()
+  };
+
   cout <<
     endl <<
-    "Read time: " <<
-    read_time.count() <<
+    "Execution time: " <<
+    duration_cast<duration<double>>(end - start).count() <<
     " seconds" <<
     endl;
 
