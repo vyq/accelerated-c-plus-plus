@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <iomanip>
 #include <ios>
 #include <iostream>
@@ -10,6 +11,7 @@
 #include "student.h"
 
 using namespace std;
+using namespace std::chrono;
 
 void ReadFromStandardInput(container_type& s, string::size_type& l) {
   Student student;
@@ -46,6 +48,10 @@ void ReadFromStandardInput(container_type& s, string::size_type& l) {
 }
 
 void ReadFromFile(container_type& s, string::size_type& l) {
+  high_resolution_clock::time_point start {
+    high_resolution_clock::now()
+  };
+
   try {
     ifstream file("grades_10.csv");
     Read(file, s, l);
@@ -54,6 +60,15 @@ void ReadFromFile(container_type& s, string::size_type& l) {
   } catch (domain_error e) {
     throw e;
   }
+
+  high_resolution_clock::time_point end {
+    high_resolution_clock::now()
+  };
+
+  cout << endl;                                                         
+  auto duration {duration_cast<microseconds>(end - start).count()};     
+  cout << "Read time: " << duration << " microseconds" << endl;
+
 }
 
 int main() {
