@@ -66,7 +66,7 @@ Learn C++
   }
   ```
 - 5-2: Execution time in seconds (average of 3 runs):
-  |Rows|`vector`|`list`|
+  |Rows|vector|list|
   |-|-|-|
   |10|0.0006430576667|0.000637815|
   |1000|0.04035813333|0.02703803333|
