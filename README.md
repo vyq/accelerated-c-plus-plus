@@ -113,6 +113,14 @@ Learn C++
 - A [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) is a template for creating objects, providing initial values for [state](https://en.wikipedia.org/wiki/State_(computer_science)), and implementing behaviors
 - A [handle](https://en.wikipedia.org/wiki/Handle_(computing)) is a fixed size reference to dynamically sized resources
 - Use [initialization lists](https://isocpp.org/wiki/faq/ctors#init-lists) when initializing member objects for performance
+- `enum` is used to declare a user-defined type. Example:
+  ```cpp
+  enum Color {red, blue, green};
+  ```
+- The `class` keyword in `enum class Color {red, blue, green};` denotes that the enumeration is scoped. Example:
+  ```cpp
+  Color foo = Color::red;
+  ```
 
 # to-do
 
