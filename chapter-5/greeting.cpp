@@ -32,13 +32,59 @@ vector<string> DrawGreeting(
   items.push_back(border);
   SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
 
-  // Invariant: Processed i words in v so far
+ // Invariant: Processed i words in v so far
   for (vector<string>::size_type i = 0; i != v.size(); ++i) {
     items.push_back(
       "*" +
       padding_side +
       v[i] +
       string(length - v[i].size(), ' ') +
+      padding_side +
+      "*"
+    );
+  }
+
+  SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
+  items.push_back(border);
+
+  return items;
+}
+
+vector<string> DrawCenteredGreeting(
+  const vector<string>& v,
+  int space_left_right,
+  int space_top_bottom
+) {
+  vector<string> items;
+  string::size_type length = GetLongestLength(v);
+  const string::size_type columns {
+    length +
+    space_left_right * 2 +
+    2
+  };
+  const string border(columns, '*');
+  const string padding_top_bottom(columns - 2, ' ');
+  const string padding_side(space_left_right, ' ');
+
+  items.push_back(border);
+  SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
+
+ // Invariant: Processed i words in v so far
+  for (vector<string>::size_type i = 0; i != v.size(); ++i) {
+    string::size_type difference {length - v[i].size()};
+    double padding_left {static_cast<double>(difference) / 2};
+    double padding_right {
+      difference % 2 == 0 ?
+      static_cast<double>(difference) / 2 :
+      static_cast<double>(difference) / 2 + 1
+    };
+
+    items.push_back(
+      "*" +
+      padding_side +
+      string(padding_left, ' ') +
+      v[i] +
+      string(padding_right, ' ') +
       padding_side +
       "*"
     );
@@ -71,6 +117,15 @@ int main() {
     space_left_right,
     space_top_bottom
   )};
+
+  for (auto& item: items)
+    cout << item << endl;
+
+  items = DrawCenteredGreeting(
+    kGreeting,
+    space_left_right,
+    space_top_bottom
+  );
 
   for (auto& item: items)
     cout << item << endl;
