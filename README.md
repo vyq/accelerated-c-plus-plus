@@ -72,6 +72,7 @@ Learn C++
   |10|0.0006430576667|0.000637815|
   |1000|0.04035813333|0.02703803333|
   |10000|0.518863|0.1394713333|
+- 5-5: `center()` is useful for [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics) that are indexed by a [Cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) and have a fixed width and height. A picture has these properties if it becomes pixelated after enlarging it
 
 # takeaway
 
