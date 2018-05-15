@@ -73,6 +73,12 @@ Learn C++
   |1000|0.04035813333|0.02703803333|
   |10000|0.518863|0.1394713333|
 - 5-5: `center()` is useful for [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics) that are indexed by a [Cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) and have a fixed width and height. A picture has these properties if it becomes pixelated after enlarging it
+- 5-6: Execution time in seconds (average of 3 runs):
+
+  |Records|std::vector erase|std::vector insert resize|std::list erase|std::list insert resize|
+  |10|0.0006430576667|`std::bad_alloc` exception|0.000637815|0.0006860083333|
+  |1000|0.04035813333|`std::bad_alloc` exception|0.02703803333|0.1547693333|
+  |10000|0.518863|`std::bad_alloc` exception|0.1394713333|11.76033333|
 
 # takeaway
 
