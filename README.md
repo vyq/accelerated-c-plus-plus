@@ -117,7 +117,7 @@ Learn C++
   ```cpp
   enum Color {red, blue, green};
   ```
-- The `class` keyword in `enum class Color {red, blue, green};` denotes that the enumeration is scoped. Example:
+- The `class` keyword in `enum class Color {red, blue, green};` denotes that the enumeration is [strongly typed](https://en.wikipedia.org/wiki/Strong_and_weak_typing) and [scoped](https://en.wikipedia.org/wiki/Scope_(computer_science)). Example:
   ```cpp
   Color foo = Color::red;
   ```
