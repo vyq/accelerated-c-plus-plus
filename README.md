@@ -78,7 +78,7 @@ Learn C++
   |Records|std::vector erase|std::vector insert resize|std::list erase|std::list insert resize|
   |10|0.0006430576667|std::bad_alloc exception|0.000637815|0.0006860083333|
   |1000|0.04035813333|std::bad_alloc exception|0.02703803333|0.1547693333|
-  |10000|0.518863|`std::bad_alloc` exception|0.1394713333|11.76033333|
+  |10000|0.518863|std::bad_alloc exception|0.1394713333|11.76033333|
 
 # takeaway
 
