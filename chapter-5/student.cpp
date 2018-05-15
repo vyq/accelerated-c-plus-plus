@@ -23,13 +23,13 @@ container_type GetFailStudents(container_type& s) {
     if (IsFailGrade(*iterator)) {
       fail.push_back(*iterator);
       
-      s.insert(s.begin(), next(iterator), s.end());
-      container_type::size_type size {s.size()};
-      container_type unprocessed_students(next(iterator), s.end());
-      s.resize(size - unprocessed_students.size() - 1);
-      iterator = s.begin();
+//      s.insert(s.begin(), next(iterator), s.end());
+//      container_type::size_type size {s.size()};
+//      container_type unprocessed_students(next(iterator), s.end());
+//      s.resize(size - unprocessed_students.size() - 1);
+//      iterator = s.begin();
 
-//      iterator = s.erase(iterator);
+      iterator = s.erase(iterator);
     } else
       ++iterator;
   }
