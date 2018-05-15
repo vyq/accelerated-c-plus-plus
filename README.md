@@ -126,4 +126,4 @@ Learn C++
 
 - Read page 144 exercise 5-4 of Accelerated C++
 - Encapsulate `sort()` function call based on `container_type`
-- Read page 51 section 2.4 of The C++ Programming Language
+- Read page 54 section 2.4.2 of The C++ Programming Language
