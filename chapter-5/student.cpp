@@ -1,6 +1,9 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <list>
 #include <stdexcept>
+#include <vector>
 #include "grade.h"
 #include "split.h"
 #include "student.h"
@@ -96,4 +99,16 @@ istream& ReadHomework(istream& is, vector<double>& v) {
   }
 
   return is;
+}
+
+list<Student>& SortStudents(list<Student>& s) {
+  s.sort(Compare);
+
+  return s;
+}
+
+vector<Student>& SortStudents(vector<Student>& s) {
+  sort(s.begin(), s.end(), Compare);
+
+  return s;
 }

@@ -97,11 +97,7 @@ int main() {
     return 1;
   }
 
-  // Sort vector
-  // sort(students.begin(), students.end(), Compare);
-
-  // Sort list
-  students.sort(Compare);
+  SortStudents(students);
 
   container_type fail_students {GetFailStudents(students)};
 
