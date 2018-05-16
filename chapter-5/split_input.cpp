@@ -9,6 +9,7 @@ using namespace std;
 int main() {
   string s;
 
+  // Invariant: Processed all lines read from cin so far
   while(getline(cin, s)) {
     vector<string> v {Split(s)};
 
