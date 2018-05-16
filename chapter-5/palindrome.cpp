@@ -9,8 +9,12 @@ int main() {
   ifstream file(filename);
   string word;
 
+  // Invariant: Processed all words read from file so far
   while (getline(file, word)) {
-    cout << word;
+    string reversed_word (word.rbegin(), word.rend());
+
+    if (word == reversed_word)
+      cout << word << endl;
   }
 
   return 0;
