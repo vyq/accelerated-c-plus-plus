@@ -126,6 +126,7 @@ Learn C++
   enum class Color {red, blue, green};
   Color foo = Color::red;
   ```
+- `static_assert()` throws an error during compile time if the assertion is not `true`
 
 # to-do
 
