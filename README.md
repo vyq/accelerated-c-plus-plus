@@ -80,6 +80,15 @@ Learn C++
   |10|0.0006430576667|`std::bad_alloc` exception|0.000637815|0.0006860083333|
   |1000|0.04035813333|`std::bad_alloc` exception|0.02703803333|0.1547693333|
   |10000|0.518863|`std::bad_alloc` exception|0.1394713333|11.76033333|
+- 5-7: When `frame()` is called, it:
+  1. Gets the length of the longest element in `v` by calling `width()`
+  1. Writes the top border
+  1. For each element, it
+    1. Writes the left border
+    1. Writes the element
+    1. Writes padding up to the length of the longest element
+    1. Writes the right border
+  1. Writes the bottom border
 
 # takeaway
 
