@@ -88,7 +88,7 @@ Learn C++
 - Reading from the standard input stream [flushes](http://www.cplusplus.com/reference/ostream/flush-free/) the output buffer
 - `std::cin >> v` reads non-whitespace characters from the standard input stream into `v`
 - Use `{}` when initializing variables to prevent conversions that lose information. Example: `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
-- A loop [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a loop
+- An [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a [block](https://en.wikipedia.org/wiki/Block_(programming)). It helps us to define precisely what we want and reduce the chance of errors
 - `std::string::size_type` is a type used to store the size of a [string](http://www.cplusplus.com/reference/string/string/)
 - Loop invariants are expressed more clearly using `[0, rows)` asymmetric ranges
 - Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
