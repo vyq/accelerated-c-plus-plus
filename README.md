@@ -89,6 +89,7 @@ Learn C++
       1. Writes padding up to the length of the longest element
       1. Writes the right border
   1. Writes the bottom border
+- 5-8: The function would `throw` a `std::length_error` exception
 
 # takeaway
 
