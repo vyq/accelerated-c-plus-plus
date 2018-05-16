@@ -3,7 +3,7 @@ standard = -std=c++1z
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: main greeting split permuted_index reader
+all: main greeting split permuted_index reader letter_case
 
 main:
 	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp split.cpp
@@ -19,3 +19,6 @@ permuted_index:
 
 reader:
 	$(flags) reader.out reader.cpp split.cpp
+
+letter_case:
+	$(flags) letter_case.out letter_case.cpp
