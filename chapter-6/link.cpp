@@ -100,7 +100,7 @@ bool IsNotLinkCharacter(char c) {
 }
 
 int main() {
-  string s {"http://google.com"};
+  string s {"lorem http://google.com ipsum http://ask.com"};
 
   for (auto& link : FindLinks(s))
     cout << link << endl;
