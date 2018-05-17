@@ -125,18 +125,19 @@ Learn C++
   std::cout << pointer->size << std::endl;
   ```
 - An advantage of the `vector` data structure is fast random access. A disadvantage is that it is expensive to add or delete elements that are not at the end of the `vector`
-- `()` is required as `.` has higher precedence than `*` in `(*iterator).name`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
+- `()` is required in `(*iterator).name` as `.` has higher precedence than `*`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
 - `iterator = vector.erase(iterator)` invalidates all iterators after the element that was erased and makes `iterator` refer to the element after the erased element
 - `vector.push_back(element)` invalidates all iterators referring to `vector`
 - A [class](https://en.wikipedia.org/wiki/Class_(computer_programming)) is a template for creating objects, providing initial values for [state](https://en.wikipedia.org/wiki/State_(computer_science)), and implementing behaviors
 - A [handle](https://en.wikipedia.org/wiki/Handle_(computing)) is a fixed size reference to dynamically sized resources
 - Use [initialization lists](https://isocpp.org/wiki/faq/ctors#init-lists) when initializing member objects for performance
-- `enum` is used to declare a user-defined type. The `class` keyword denotes that the enumeration is [strongly typed](https://en.wikipedia.org/wiki/Strong_and_weak_typing) and [scoped](https://en.wikipedia.org/wiki/Scope_(computer_science)). Example:
+- `enum` is used to declare a user-defined type. `class` denotes that the enumeration is [strongly typed](https://en.wikipedia.org/wiki/Strong_and_weak_typing) and [scoped](https://en.wikipedia.org/wiki/Scope_(computer_science)). Example:
   ```cpp
   enum class Color {red, blue, green};
   Color foo = Color::red;
   ```
 - `static_assert()` throws an error during compile time if the assertion is not `true`
+- [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) is faster than [dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC)
 
 # to-do
 
