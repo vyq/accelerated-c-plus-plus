@@ -140,7 +140,7 @@ Learn C++
 - [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) is faster than [dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC)
 - The postfix increment operator `i = j++;` is equivalent to `i = j; ++j;`
 - [`back_inserter()`](http://www.cplusplus.com/reference/iterator/back_inserter/) is an iterator adaptor that inserts elements at the end of the container
-- `static` is a [storage class specifier](https://en.wikipedia.org/wiki/C_syntax#Storage_class_specifiers). Local variables declared with `static` are initialized on the first function call and are preserved across subsequent invocations
+- `static` is a [storage class specifier](https://en.wikipedia.org/wiki/C_syntax#Storage_class_specifiers). Local variables declared with `static` are initialized on the first function call and preserved across subsequent invocations
 - `iterator[-1]` is equivalent to `*(iterator - 1)` and denotes the element at the position just before `iterator`
 
 # to-do
