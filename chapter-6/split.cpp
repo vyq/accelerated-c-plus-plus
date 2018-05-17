@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cctype>
 #include <string>
 #include <vector>
@@ -5,27 +6,30 @@
 
 using namespace std;
 
+bool IsNotWhitespace(char c) {
+  return !isspace(c);
+}
+
+bool IsWhitespace(char c) {
+  return isspace(c);
+}
+
 vector<string> Split(const string& s) {
   vector<string> items;
-  typedef string::size_type string_size;
-  string_size i {0};
+  typedef string::const_iterator iterator;
 
-  // Invariant: Processed i characters so far
-  while (i != s.size()) {
-    // Invariant: Characters in [original i, current i) are all spaces
-    while (i != s.size() && isspace(s[i]))
-      ++i;
+  iterator i = s.begin();
 
-    string_size j {i};
+  // Invariant: Processed i characters in s so far
+  while (i != s.end()) {
+    i = find_if(i, s.end(), IsNotWhitespace);
 
-    // Invariant: No whitespace characters in [original j, current j)
-    while (j != s.size() && !isspace(s[j]))
-      ++j;
+    iterator j = find_if(i, s.end(), IsWhitespace);
 
-    if (i != j) {
-      items.push_back(s.substr(i, j - i));
-      i = j;
-    }
+    if (i != s.end())
+      items.push_back(string(i, j));
+
+    i = j;
   }
 
   return items;
