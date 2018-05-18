@@ -142,6 +142,7 @@ Learn C++
 - [`back_inserter()`](http://www.cplusplus.com/reference/iterator/back_inserter/) is an iterator adaptor that inserts elements at the end of the container
 - `static` is a [storage class specifier](https://en.wikipedia.org/wiki/C_syntax#Storage_class_specifiers). Local variables declared with `static` are initialized on the first function call and preserved across subsequent invocations
 - `iterator[-1]` is equivalent to `*(iterator - 1)` and denotes the element at the position just before `iterator`
+- A [destructor](https://en.wikipedia.org/wiki/Destructor_(computer_programming)) is prefixed with the complement operator `~`, followed by the name of the class. It frees up memory using the `delete` operator
 
 # to-do
 
