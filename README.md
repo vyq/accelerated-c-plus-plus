@@ -143,6 +143,7 @@ Learn C++
 - `static` is a [storage class specifier](https://en.wikipedia.org/wiki/C_syntax#Storage_class_specifiers). Local variables declared with `static` are initialized on the first function call and preserved across subsequent invocations
 - `iterator[-1]` is equivalent to `*(iterator - 1)` and denotes the element at the position just before `iterator`
 - A [destructor](https://en.wikipedia.org/wiki/Destructor_(computer_programming)) is prefixed with the complement operator `~`, followed by the name of the class. It frees up memory using the `delete` operator
+- [Resource acquisition is initialization](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) is a technique for allocating resources in a constructor and deallocating them in a destructor
 
 # to-do
 
