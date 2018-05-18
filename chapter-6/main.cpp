@@ -16,12 +16,18 @@ using namespace std::chrono;
 
 void ReadFromStandardInput(container_type& s, string::size_type& l) {
   Student student;
+  vector<Student> done, not_done;
 
   // Invariant: students contains all student grades read so far
   while (true) {
     try {
       Read(cin, student);
       s.push_back(student);
+
+      if (IsHomeworkDone(student))
+        done.push_back(student);
+      else
+        not_done.push_back(student);
 
       l = max(
         l,
@@ -53,7 +59,7 @@ void ReadFromFile(
   string::size_type& l
 ) {
   try {
-    string filename {"grades_10000.csv"};
+    string filename {"grades_10.csv"};
     ifstream file(filename);
     Read(file, s, l);
   } catch (length_error e) {

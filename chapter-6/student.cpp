@@ -37,6 +37,13 @@ container_type GetFailStudents(container_type& s) {
   return fail;
 }
 
+bool IsHomeworkDone(const Student& s) {
+  return (
+    find(s.homework.begin(), s.homework.end(), 0) ==
+    s.homework.end()
+  );
+}
+
 istream& Read(istream& is, Student& s) {
   cout << "Student name: ";
   is >> s.name;
@@ -48,10 +55,9 @@ istream& Read(istream& is, Student& s) {
   if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
     throw domain_error("Invalid midterm or final exam grades.");
 
-  vector<double> homework;
-  ReadHomework(is, homework);
+  ReadHomework(is, s.homework);
   
-  s.final_grade = ComputeGrade(midterm, final, homework);
+  s.final_grade = ComputeGrade(midterm, final, s.homework);
 
   return is;
 }
@@ -59,10 +65,10 @@ istream& Read(istream& is, Student& s) {
 ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
   Student student;
   string line;
+  vector<Student> done, not_done;
 
   while(getline(fs, line)) {
     vector<string> v {Split(line, ',')};
-
     student.name = v[0];
     double midterm {stod(v[1])};
     double final {stod(v[2])};
@@ -70,21 +76,28 @@ ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
     if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
       throw domain_error("Invalid midterm or final exam grades.");
 
-    vector<double> homework;
-
     // Invariant: Stored all homework read so far                       
     for (
       vector<string>::const_iterator i = v.begin() + 3;
       i != v.end();
       ++i
     )
-      homework.push_back(stod(*i));                                     
+      student.homework.push_back(stod(*i));
   
-    student.final_grade = ComputeGrade(midterm, final, homework);
+    student.final_grade = ComputeGrade(
+      midterm,
+      final,
+      student.homework
+    );
 
     s.push_back(student);
 
     l = max(l, student.name.size());
+
+    if (IsHomeworkDone(student))
+      done.push_back(student);
+    else
+      not_done.push_back(student);
   }
 
   return fs;
