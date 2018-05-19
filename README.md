@@ -150,4 +150,4 @@ Learn C++
 # to-do
 
 - Read page 158 chapter 6.2.2 of Accelerated C++
-- Read page 65 section 3.2.2 of The C++ Programming Language
+- Read page 68 section 3.2.4 of The C++ Programming Language
