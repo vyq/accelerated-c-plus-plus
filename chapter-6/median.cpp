@@ -1,7 +1,9 @@
 #include <algorithm>
 #include <stdexcept>
 #include <vector>
+#include "grade.h"
 #include "median.h"
+#include "student.h"
 
 using namespace std;
 
@@ -17,4 +19,17 @@ double ComputeMedian(vector<double> v) {
   vector_size middle {size / 2};
 
   return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
+}
+
+double ComputeMedian(vector<Student>& s) {
+  vector<double> grades;
+
+  transform(
+    s.begin(),
+    s.end(),
+    back_inserter(grades),
+    ComputeGradeWrapper
+  );
+
+  return ComputeMedian(grades);
 }

@@ -49,15 +49,14 @@ istream& Read(istream& is, Student& s) {
   is >> s.name;
 
   cout << "Midterm and final exam grades: ";
-  double midterm, final;
-  is >> midterm >> final;
+  is >> s.midterm >> s.final;
 
-  if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
+  if (s.midterm < 0 || s.midterm > 100 || s.final < 0 || s.final > 100)
     throw domain_error("Invalid midterm or final exam grades.");
 
   ReadHomework(is, s.homework);
   
-  s.final_grade = ComputeGrade(midterm, final, s.homework);
+  s.final_grade = ComputeGrade(s.midterm, s.final, s.homework);
 
   return is;
 }
@@ -70,10 +69,15 @@ ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
   while(getline(fs, line)) {
     vector<string> v {Split(line, ',')};
     student.name = v[0];
-    double midterm {stod(v[1])};
-    double final {stod(v[2])};
+    student.midterm = stod(v[1]);
+    student.final = stod(v[2]);
 
-    if (midterm < 0 || midterm > 100 || final < 0 || final > 100)
+    if (
+      student.midterm < 0 ||
+      student.midterm > 100 ||
+      student.final < 0 ||
+      student.final > 100
+    )
       throw domain_error("Invalid midterm or final exam grades.");
 
     // Invariant: Stored all homework read so far                       
@@ -85,8 +89,8 @@ ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
       student.homework.push_back(stod(*i));
   
     student.final_grade = ComputeGrade(
-      midterm,
-      final,
+      student.midterm,
+      student.final,
       student.homework
     );
 

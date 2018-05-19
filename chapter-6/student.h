@@ -10,7 +10,7 @@
 struct Student {
   std::string name;
   std::vector<double> homework;
-  double final_grade;
+  double midterm, final, final_grade;
 };
 
 //typedef std::vector<Student> container_type;

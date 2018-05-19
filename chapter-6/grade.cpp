@@ -21,6 +21,18 @@ double ComputeGrade(
   return ComputeGrade(midterm, final, ComputeMedian(homework));
 }
 
+double ComputeGrade(const Student& s) {
+  return ComputeGrade(s.midterm, s.final, s.homework);
+}
+
+double ComputeGradeWrapper(const Student& s) {
+  try {
+    return ComputeGrade(s);
+  } catch (length_error) {
+    return ComputeGrade(s.midterm, s.final, 0);
+  }
+}
+
 bool IsFailGrade(const Student& s) {
   return s.final_grade < 60;
 }
