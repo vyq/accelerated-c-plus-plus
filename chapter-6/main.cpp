@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include <string>
 #include <typeinfo>
+#include "average.h"
 #include "grade.h"
 #include "median.h"
 #include "student.h"
@@ -192,6 +193,7 @@ int main() {
   };
 
   WriteComparison(cout, ComputeMedian, done, not_done);
+  WriteComparison(cout, ComputeAverage, done, not_done);
 
   cout <<
     endl <<

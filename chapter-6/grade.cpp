@@ -30,6 +30,14 @@ double ComputeGrade(const Student& s) {
   return ComputeGrade(s.midterm, s.final, s.homework);
 }
 
+double ComputeAverageGradeWrapper(const Student& s) {
+  try {
+    return ComputeAverageGrade(s);
+  } catch (length_error) {
+    return ComputeGrade(s.midterm, s.final, 0);
+  }
+}
+
 double ComputeGradeWrapper(const Student& s) {
   try {
     return ComputeGrade(s);
