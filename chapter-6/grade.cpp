@@ -1,10 +1,15 @@
 #include <stdexcept>
 #include <vector>
+#include "average.h"
 #include "grade.h"
 #include "median.h"
 #include "student.h"
 
 using namespace std;
+
+double ComputeAverageGrade(const Student& s) {
+  return ComputeGrade(s.midterm, s.final, ComputeAverage(s.homework));
+}
 
 double ComputeGrade(double midterm, double final, double homework) {
   return 0.2 * midterm + 0.4 * final + 0.4 * homework;

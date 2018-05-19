@@ -4,6 +4,7 @@
 #include <vector>
 #include "student.h"
 
+double ComputeAverageGrade(const Student&);
 double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const std::vector<double>&);
 double ComputeGrade(const Student&);
