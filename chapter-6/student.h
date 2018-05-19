@@ -23,7 +23,9 @@ std::istream& Read(std::istream&, Student&);
 std::ifstream& Read(
   std::ifstream&,
   container_type&,
-  std::string::size_type&
+  std::string::size_type&,
+  std::vector<Student>&,
+  std::vector<Student>&
 );
 std::istream& ReadHomework(std::istream&, std::vector<double>&);
 std::list<Student>& SortStudents(std::list<Student>&);

@@ -61,10 +61,15 @@ istream& Read(istream& is, Student& s) {
   return is;
 }
 
-ifstream& Read(ifstream& fs, container_type& s, string::size_type& l) {
+ifstream& Read(
+  ifstream& fs,
+  container_type& s,
+  string::size_type& l,
+  vector<Student>& done,
+  vector<Student>& not_done
+) {
   Student student;
   string line;
-  vector<Student> done, not_done;
 
   while(getline(fs, line)) {
     vector<string> v {Split(line, ',')};

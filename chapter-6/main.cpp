@@ -9,14 +9,19 @@
 #include <string>
 #include <typeinfo>
 #include "grade.h"
+#include "median.h"
 #include "student.h"
 
 using namespace std;
 using namespace std::chrono;
 
-void ReadFromStandardInput(container_type& s, string::size_type& l) {
+void ReadFromStandardInput(
+  container_type& s,
+  string::size_type& l,
+  vector<Student>& done,
+  vector<Student>& not_done
+) {
   Student student;
-  vector<Student> done, not_done;
 
   // Invariant: students contains all student grades read so far
   while (true) {
@@ -43,7 +48,7 @@ void ReadFromStandardInput(container_type& s, string::size_type& l) {
       else if (reply == "No")
         break;
       else {
-        cout << "Invalid reply. Assume \"No\"" << endl << endl;
+        cout << "Invalid reply. Assume \"No\"" << endl;
         break;
       }
     } catch (length_error e) {
@@ -56,12 +61,14 @@ void ReadFromStandardInput(container_type& s, string::size_type& l) {
 
 void ReadFromFile(
   container_type& s,
-  string::size_type& l
+  string::size_type& l,
+  vector<Student>& done,
+  vector<Student>& not_done
 ) {
   try {
     string filename {"grades_10.csv"};
     ifstream file(filename);
-    Read(file, s, l);
+    Read(file, s, l, done, not_done);
   } catch (length_error e) {
     throw e;
   } catch (domain_error e) {
@@ -69,9 +76,36 @@ void ReadFromFile(
   }
 }
 
+void WriteComparison(
+  ostream& os,
+  const string& name,
+  double Compute(const vector<Student>&),
+  const vector<Student>& done,
+  const vector<Student>& not_done
+) {
+  os << endl << name << endl << "Median (did homework): ";
+
+  try {
+    os << Compute(done);
+  } catch (length_error) {
+    os << "All students did not do homework";
+  }
+
+  os << endl << "Median (did not do homework): ";
+
+  try {
+    os << Compute(not_done);
+  } catch (length_error) {
+    os << "All students did homework";
+  }
+
+  os << endl;
+}
+
 int main() {
   container_type students;
   Student student;
+  vector<Student> done, not_done;
   string::size_type longest_name_length {0};
   high_resolution_clock::time_point start;
 
@@ -85,13 +119,18 @@ int main() {
     start = high_resolution_clock::now();
 
     if (x == 1)
-      ReadFromStandardInput(students, longest_name_length);
+      ReadFromStandardInput(
+        students,
+        longest_name_length,
+        done,
+        not_done
+      );
     else if (x == 2)
-      ReadFromFile(students, longest_name_length);
+      ReadFromFile(students, longest_name_length, done, not_done);
     else {
       cout << endl << "Invalid input. Assume 2." << endl << endl;
 
-      ReadFromFile(students, longest_name_length);
+      ReadFromFile(students, longest_name_length, done, not_done);
     }
   } catch (length_error e) {
     cout << endl << e.what() << endl;
@@ -152,6 +191,8 @@ int main() {
   high_resolution_clock::time_point end {
     high_resolution_clock::now()
   };
+
+  WriteComparison(cout, "Median", ComputeMedian, done, not_done);
 
   cout <<
     endl <<

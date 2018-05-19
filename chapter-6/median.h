@@ -5,6 +5,6 @@
 #include "student.h"
 
 double ComputeMedian(std::vector<double>);
-double ComputeMedian(std::vector<Student>&);
+double ComputeMedian(const std::vector<Student>&);
 
 #endif

@@ -21,7 +21,7 @@ double ComputeMedian(vector<double> v) {
   return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
 }
 
-double ComputeMedian(vector<Student>& s) {
+double ComputeMedian(const vector<Student>& s) {
   vector<double> grades;
 
   transform(
