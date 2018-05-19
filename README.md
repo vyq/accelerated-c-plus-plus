@@ -144,6 +144,7 @@ Learn C++
 - `iterator[-1]` is equivalent to `*(iterator - 1)` and denotes the element at the position just before `iterator`
 - A [destructor](https://en.wikipedia.org/wiki/Destructor_(computer_programming)) is prefixed with the complement operator `~`, followed by the name of the class. It frees up memory using the `delete` operator
 - [Resource acquisition is initialization](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) is a technique for allocating resources in a constructor and deallocating them in a destructor
+- `virtual int size() const = 0` denotes a [virtual function](https://en.wikipedia.org/wiki/Virtual_function) in an abstract class. `= 0` denotes that a subclass must implement `size()`
 
 # to-do
 
