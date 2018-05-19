@@ -89,7 +89,7 @@ void WriteComparison(
   try {
     os << Compute(done);
   } catch (length_error) {
-    os << "All students did not do homework";
+    os << "All students did not do some homework";
   }
 
   os << endl << "Median (did not do homework): ";
@@ -194,6 +194,13 @@ int main() {
   };
 
   WriteComparison(cout, "Median", ComputeMedian, done, not_done);
+  WriteComparison(
+    cout,
+    "Optimistic Median",
+    ComputeOptimisticMedian,
+    done,
+    not_done
+  );
   WriteComparison(cout, "Average", ComputeAverage, done, not_done);
 
   cout <<

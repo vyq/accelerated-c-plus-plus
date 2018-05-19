@@ -33,3 +33,16 @@ double ComputeMedian(const vector<Student>& s) {
 
   return ComputeMedian(grades);
 }
+
+double ComputeOptimisticMedian(const vector<Student>& s) {
+  vector<double> grades;
+
+  transform(
+    s.begin(),
+    s.end(),
+    back_inserter(grades),
+    ComputeOptimisticMedianGradeWrapper
+  );
+
+  return ComputeMedian(grades);
+}

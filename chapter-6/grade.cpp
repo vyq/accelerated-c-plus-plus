@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stdexcept>
 #include <vector>
 #include "average.h"
@@ -9,6 +10,14 @@ using namespace std;
 
 double ComputeAverageGrade(const Student& s) {
   return ComputeGrade(s.midterm, s.final, ComputeAverage(s.homework));
+}
+
+double ComputeAverageGradeWrapper(const Student& s) {
+  try {
+    return ComputeAverageGrade(s);
+  } catch (length_error) {
+    return ComputeGrade(s.midterm, s.final, 0);
+  }
 }
 
 double ComputeGrade(double midterm, double final, double homework) {
@@ -30,17 +39,41 @@ double ComputeGrade(const Student& s) {
   return ComputeGrade(s.midterm, s.final, s.homework);
 }
 
-double ComputeAverageGradeWrapper(const Student& s) {
+double ComputeGradeWrapper(const Student& s) {
   try {
-    return ComputeAverageGrade(s);
+    return ComputeGrade(s);
   } catch (length_error) {
     return ComputeGrade(s.midterm, s.final, 0);
   }
 }
 
-double ComputeGradeWrapper(const Student& s) {
+double ComputeOptimisticMedianGrade(const Student& s) {
+  vector<double> non_zero;
+
+  remove_copy(
+    s.homework.begin(),
+    s.homework.end(),
+    back_inserter(non_zero),
+    0
+  );
+
+  if (non_zero.empty())
+    return ComputeGrade(
+      s.midterm,
+      s.final,
+      0
+    );
+  else
+    return ComputeGrade(
+      s.midterm,
+      s.final,
+      ComputeMedian(s.homework)
+    );
+}
+
+double ComputeOptimisticMedianGradeWrapper(const Student& s) {
   try {
-    return ComputeGrade(s);
+    return ComputeOptimisticMedianGrade(s);
   } catch (length_error) {
     return ComputeGrade(s.midterm, s.final, 0);
   }
