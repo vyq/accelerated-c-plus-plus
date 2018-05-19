@@ -146,6 +146,7 @@ Learn C++
 - [Resource acquisition is initialization](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) is a technique for allocating resources in a constructor and deallocating them in a destructor
 - `virtual int size() const = 0` denotes a [virtual function](https://en.wikipedia.org/wiki/Virtual_function) in an abstract class. `= 0` denotes that a derived class must implement `size()`
 - A [virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) is an array of pointers used to invoke the appropriate method implementations at runtime
+- Use a [wrapper function](https://en.wikipedia.org/wiki/Wrapper_function) for error handling and calling other functions
 
 # to-do
 
