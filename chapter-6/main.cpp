@@ -79,11 +79,12 @@ void ReadFromFile(
 
 void WriteComparison(
   ostream& os,
+  string name,
   double Compute(const vector<Student>&),
   const vector<Student>& done,
   const vector<Student>& not_done
 ) {
-  os << endl << "Median (did homework): ";
+  os << endl << name << endl << "Median (did homework): ";
 
   try {
     os << Compute(done);
@@ -192,8 +193,8 @@ int main() {
     high_resolution_clock::now()
   };
 
-  WriteComparison(cout, ComputeMedian, done, not_done);
-  WriteComparison(cout, ComputeAverage, done, not_done);
+  WriteComparison(cout, "Median", ComputeMedian, done, not_done);
+  WriteComparison(cout, "Average", ComputeAverage, done, not_done);
 
   cout <<
     endl <<
