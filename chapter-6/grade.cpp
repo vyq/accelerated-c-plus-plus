@@ -82,3 +82,7 @@ double ComputeOptimisticMedianGradeWrapper(const Student& s) {
 bool IsFailGrade(const Student& s) {
   return s.final_grade < 60;
 }
+
+bool IsPassGrade(const Student& s) {
+  return !IsFailGrade(s);
+}

@@ -16,23 +16,9 @@ bool Compare(const Student& x, const Student& y) {
 
 container_type GetFailStudents(container_type& s) {
   container_type fail;
-  container_type::iterator iterator = s.begin();
 
-  // Invariant: Processed iterator students so far
-  while (iterator != s.end()) {
-    if (IsFailGrade(*iterator)) {
-      fail.push_back(*iterator);
-      
-//      s.insert(s.begin(), next(iterator), s.end());
-//      container_type::size_type size {s.size()};
-//      container_type unprocessed_students(next(iterator), s.end());
-//      s.resize(size - unprocessed_students.size() - 1);
-//      iterator = s.begin();
-
-      iterator = s.erase(iterator);
-    } else
-      ++iterator;
-  }
+  remove_copy_if(s.begin(), s.end(), back_inserter(fail), IsPassGrade);
+  s.erase(remove_if(s.begin(), s.end(), IsFailGrade), s.end());
 
   return fail;
 }
