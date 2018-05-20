@@ -127,6 +127,8 @@ int main() {
     space_top_bottom
   );
 
+  cout << endl;
+
   for (auto& item: items)
     cout << item << endl;
 
