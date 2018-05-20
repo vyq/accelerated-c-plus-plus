@@ -15,10 +15,11 @@ bool Compare(const Student& x, const Student& y) {
 }
 
 container_type GetFailStudents(container_type& s) {
-  container_type fail;
-
-  remove_copy_if(s.begin(), s.end(), back_inserter(fail), IsPassGrade);
-  s.erase(remove_if(s.begin(), s.end(), IsFailGrade), s.end());
+  container_type::iterator iterator {
+    stable_partition(s.begin(), s.end(), IsPassGrade)
+  };
+  container_type fail(iterator, s.end());
+  s.erase(iterator, s.end());
 
   return fail;
 }
