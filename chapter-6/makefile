@@ -3,7 +3,7 @@ standard = -std=c++1z
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: main greeting split permuted_index reader palindrome link
+all: main greeting split permuted_index reader palindrome link copy
 
 main:
 	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp split.cpp average.cpp
@@ -25,3 +25,6 @@ palindrome:
 
 link:
 	$(flags) link.out link.cpp
+
+copy:
+	$(flags) copy.out copy.cpp

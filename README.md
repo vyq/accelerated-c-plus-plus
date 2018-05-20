@@ -90,6 +90,7 @@ Learn C++
       1. Writes the right border
   1. Writes the bottom border
 - 5-8: The function would `throw` a `std::length_error` exception
+- 6-3: The program fragment throws a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) error. `v` needs to be initialized with `u.size()` before calling `copy()`
 
 # takeaway
 
