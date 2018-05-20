@@ -22,22 +22,28 @@ vector<string> ConcatenateHorizontally(
   const vector<string>& right
 ) {
   vector<string> items;
+  vector<string>::const_iterator left_iterator {left.begin()};
+  vector<string>::const_iterator right_iterator {right.begin()};
 
   string::size_type space {GetLongestLength(left) + 1};
 
   vector<string>::size_type i {0}, j {0};
 
   // Invariant: Have not seen all rows in left and right
-  while (i != left.size() || j != right.size()) {
+  while (left_iterator != left.end() || right_iterator != right.end()) {
     string s;
 
-    if (i != left.size())
-      s = left[i++];
+    if (left_iterator != left.end()) {
+      s += *left_iterator;
+      ++left_iterator;
+    }
 
     s += string(space - s.size(), ' ');
 
-    if (j != right.size())
-      s += right[j++];
+    if (right_iterator != right.end()) {
+      s += *right_iterator;
+      ++right_iterator;
+    }
 
     items.push_back(s);
   }
