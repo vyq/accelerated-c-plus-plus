@@ -153,6 +153,7 @@ Learn C++
     vector<unique_ptr<Shape>> v;
   } // All Shape elements are deleted when v is garbage collected
   ```
+- Algorithms in [`<algorithm>`](http://www.cplusplus.com/reference/algorithm/) act on container elements. They do not affect containers
 
 # to-do
 
