@@ -29,7 +29,7 @@ vector<string> ConcatenateHorizontally(
 
   vector<string>::size_type i {0}, j {0};
 
-  // Invariant: Have not seen all rows in left and right
+  // Invariant: Have not processed all rows in left or right
   while (left_iterator != left.end() || right_iterator != right.end()) {
     string s;
 

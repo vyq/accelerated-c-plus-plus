@@ -32,13 +32,17 @@ vector<string> DrawGreeting(
   items.push_back(border);
   SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
 
- // Invariant: Processed i words in v so far
-  for (vector<string>::size_type i = 0; i != v.size(); ++i) {
+  // Invariant: Processed all words in v so far
+  for (
+    vector<string>::const_iterator i = v.begin();
+    i != v.end();
+    ++i
+  ) {
     items.push_back(
       "*" +
       padding_side +
-      v[i] +
-      string(length - v[i].size(), ' ') +
+      *i +
+      string(length - i->size(), ' ') +
       padding_side +
       "*"
     );
@@ -70,8 +74,12 @@ vector<string> DrawCenteredGreeting(
   SetPaddingTopBottom(items, space_top_bottom, padding_top_bottom);
 
  // Invariant: Processed i words in v so far
-  for (vector<string>::size_type i = 0; i != v.size(); ++i) {
-    string::size_type difference {length - v[i].size()};
+  for (
+    vector<string>::const_iterator i = v.begin();
+    i != v.end();
+    ++i
+  ) {
+    string::size_type difference {length - i->size()};
     double padding_left {static_cast<double>(difference) / 2};
     double padding_right {
       difference % 2 == 0 ?
@@ -83,7 +91,7 @@ vector<string> DrawCenteredGreeting(
       "*" +
       padding_side +
       string(padding_left, ' ') +
-      v[i] +
+      *i +
       string(padding_right, ' ') +
       padding_side +
       "*"
