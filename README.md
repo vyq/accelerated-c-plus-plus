@@ -147,6 +147,12 @@ Learn C++
 - `virtual int size() const = 0;` denotes a [virtual function](https://en.wikipedia.org/wiki/Virtual_function) in an abstract class. `= 0` denotes that a derived class must implement `size()`
 - A [virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) is an array of pointers used to invoke the appropriate method implementations at runtime
 - Use a [wrapper function](https://en.wikipedia.org/wiki/Wrapper_function) for error handling and calling other functions
+- Use [`std::unique_ptr`](http://www.cplusplus.com/reference/memory/unique_ptr/) to manage pointers. Example:
+  ```cpp
+  void DoWork() {
+    vector<unique_ptr<Shape>> v;
+  } // All Shape elements are deleted when v is garbage collected
+  ```
 
 # to-do
 
