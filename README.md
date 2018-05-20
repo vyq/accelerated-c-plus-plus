@@ -90,7 +90,8 @@ Learn C++
       1. Writes the right border
   1. Writes the bottom border
 - 5-8: The function would `throw` a `std::length_error` exception
-- 6-3: The program fragment throws a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) error. `v` needs to be initialized with `u.size()` before calling `copy()`
+- 6-3: The program fragment throws a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) error
+- 6-4: Fix the error in 6-3 by either initializing `v` with a fill constructor, or initializing `w` with a copy constructor. The first approach provides more flexibility by separating the initialization and copy steps. The disadvantage is slower performance as each element in `v` is initialized with `0`. The second approach is faster as each element in `u` is copied to `w` during initialization. The disadvantage is less flexibility in selecting the elements to copy
 
 # takeaway
 
