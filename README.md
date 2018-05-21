@@ -156,6 +156,7 @@ Learn C++
   } // All Shape elements are deleted when v is garbage collected
   ```
 - Algorithms in [`<algorithm>`](http://www.cplusplus.com/reference/algorithm/) act on container elements. They do not affect containers
+- [Shallow copy](https://en.wikipedia.org/wiki/Object_copying#Shallow_copy) is the default method for copying elements to another object
 
 # to-do
 
