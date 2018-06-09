@@ -162,3 +162,4 @@ Learn C++
 
 - Read page 173 exercise 6-6 of Accelerated C++
 - Read page 73 section 3.3.1 of The C++ Programming Language
+- Read https://en.wikipedia.org/wiki/Assignment_operator_(C%2B%2B)
