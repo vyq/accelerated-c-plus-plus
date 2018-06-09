@@ -1,5 +1,5 @@
-compiler = g++
-standard = -std=c++1z
+compiler = g++-8
+standard = -std=c++17
 flags = $(compiler) $(standard)
 
 all: scratch
