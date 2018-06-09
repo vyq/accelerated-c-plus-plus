@@ -138,7 +138,7 @@ Learn C++
   enum class Color {red, blue, green};
   Color foo = Color::red;
   ```
-- `static_assert()` throws an error during compile time if the assertion is not `true`
+- `static_assert()` throws an error during compile time if the assertion is not `true`. Example: `static_assert(1 == 2)` throws a `static assertion failed` error
 - [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) is faster than [dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC)
 - The postfix increment operator `i = j++;` is equivalent to `i = j; ++j;`
 - [`back_inserter()`](http://www.cplusplus.com/reference/iterator/back_inserter/) is an iterator adaptor that inserts elements at the end of the container
