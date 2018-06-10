@@ -16,6 +16,23 @@
 using namespace std;
 using namespace std::chrono;
 
+void ReadFromFile(
+  container_type& s,
+  string::size_type& l,
+  vector<Student>& done,
+  vector<Student>& not_done
+) {
+  try {
+    string filename {"grades_10.csv"};
+    ifstream file(filename);
+    Read(file, s, l, done, not_done);
+  } catch (length_error e) {
+    throw e;
+  } catch (domain_error e) {
+    throw e;
+  }
+}
+
 void ReadFromStandardInput(
   container_type& s,
   string::size_type& l,
@@ -57,23 +74,6 @@ void ReadFromStandardInput(
     } catch (domain_error e) {
       throw e;
     }
-  }
-}
-
-void ReadFromFile(
-  container_type& s,
-  string::size_type& l,
-  vector<Student>& done,
-  vector<Student>& not_done
-) {
-  try {
-    string filename {"grades_10.csv"};
-    ifstream file(filename);
-    Read(file, s, l, done, not_done);
-  } catch (length_error e) {
-    throw e;
-  } catch (domain_error e) {
-    throw e;
   }
 }
 
