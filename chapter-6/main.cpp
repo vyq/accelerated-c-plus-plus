@@ -24,7 +24,7 @@ void ReadFromStandardInput(
 ) {
   Student student;
 
-  // Invariant: students contains all student grades read so far
+  // Invariant: s contains all student grades read so far
   while (true) {
     try {
       Read(cin, student);
@@ -149,7 +149,7 @@ int main() {
 
   cout << endl << "Pass students" << endl;
 
-  // Invariant: Printed all grades read from students so far
+  // Invariant: Output all grades read from students so far
   for (auto& student: students) {
     cout <<
       student.name <<
@@ -170,7 +170,7 @@ int main() {
 
   cout << endl << "Fail students" << endl;
 
-  // Invariant: Printed all grades read from fail_students so far
+  // Invariant: Output all grades read from fail_students so far
   for (auto& student: fail_students) {
     cout <<
       student.name <<
