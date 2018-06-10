@@ -157,6 +157,8 @@ Learn C++
   ```
 - Algorithms in [`<algorithm>`](http://www.cplusplus.com/reference/algorithm/) act on container elements. They do not affect containers
 - [Shallow copy](https://en.wikipedia.org/wiki/Object_copying#Shallow_copy) is the default method for copying elements to another object
+- A [copy constructor](https://en.wikipedia.org/wiki/Copy_constructor_(C%2B%2B)) creates a new object as a copy of another object
+- An [assignment operator](https://en.wikipedia.org/wiki/Assignment_operator_(C%2B%2B)) can be overloaded to perform a [deep copy](https://en.wikipedia.org/wiki/Object_copying#Deep_copy)
 
 # to-do
 
