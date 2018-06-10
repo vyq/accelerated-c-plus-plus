@@ -78,29 +78,28 @@ void ReadFromStandardInput(
 }
 
 void WriteComparison(
-  ostream& os,
   string name,
   double Compute(const vector<Student>&),
   const vector<Student>& done,
   const vector<Student>& not_done
 ) {
-  os << endl << name << endl << "Median (did homework): ";
+  cout << endl << name << endl << "Median (did homework): ";
 
   try {
-    os << Compute(done);
+    cout << Compute(done);
   } catch (length_error) {
-    os << "All students did not do some homework";
+    cout << "All students did not do some homework";
   }
 
-  os << endl << "Median (did not do homework): ";
+  cout << endl << "Median (did not do homework): ";
 
   try {
-    os << Compute(not_done);
+    cout << Compute(not_done);
   } catch (length_error) {
-    os << "All students did homework";
+    cout << "All students did homework";
   }
 
-  os << endl;
+  cout << endl;
 }
 
 int main() {
@@ -193,15 +192,14 @@ int main() {
     high_resolution_clock::now()
   };
 
-  WriteComparison(cout, "Median", ComputeMedian, done, not_done);
+  WriteComparison("Median", ComputeMedian, done, not_done);
   WriteComparison(
-    cout,
     "Optimistic Median",
     ComputeOptimisticMedian,
     done,
     not_done
   );
-  WriteComparison(cout, "Average", ComputeAverage, done, not_done);
+  WriteComparison("Average", ComputeAverage, done, not_done);
 
   cout <<
     endl <<
