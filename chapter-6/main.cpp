@@ -16,6 +16,36 @@
 using namespace std;
 using namespace std::chrono;
 
+double ComputeGrade(string name, const vector<Student>& s) {
+  vector<double> grades;
+
+  if (name == "Median")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeGradeWrapper
+    );
+  else if (name == "Optimistic Median")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeOptimisticMedianGradeWrapper
+    );
+  else if (name == "Average")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeAverageGradeWrapper
+    );
+  else
+    throw domain_error("Invalid central tendency.");
+
+  return ComputeMedian(grades);
+}
+
 void ReadFromFile(
   container_type& s,
   string::size_type& l,
@@ -79,14 +109,14 @@ void ReadFromStandardInput(
 
 void WriteComparison(
   string name,
-  double Compute(const vector<Student>&),
+  double Compute(string, const vector<Student>&),
   const vector<Student>& done,
   const vector<Student>& not_done
 ) {
   cout << endl << name << endl << "Median (did homework): ";
 
   try {
-    cout << Compute(done);
+    cout << Compute(name, done);
   } catch (length_error) {
     cout << "All students did not do some homework";
   }
@@ -94,7 +124,7 @@ void WriteComparison(
   cout << endl << "Median (did not do homework): ";
 
   try {
-    cout << Compute(not_done);
+    cout << Compute(name, not_done);
   } catch (length_error) {
     cout << "All students did homework";
   }
@@ -192,14 +222,14 @@ int main() {
     high_resolution_clock::now()
   };
 
-  WriteComparison("Median", ComputeMedian, done, not_done);
+  WriteComparison("Median", ComputeGrade, done, not_done);
   WriteComparison(
     "Optimistic Median",
-    ComputeOptimisticMedian,
+    ComputeGrade,
     done,
     not_done
   );
-  WriteComparison("Average", ComputeAverage, done, not_done);
+  WriteComparison("Average", ComputeGrade, done, not_done);
 
   cout <<
     endl <<

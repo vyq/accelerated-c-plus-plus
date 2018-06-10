@@ -11,16 +11,3 @@ using namespace std;
 double ComputeAverage(vector<double> v) {
   return accumulate(v.begin(), v.end(), 0.0) / v.size();
 }
-
-double ComputeAverage(const vector<Student>& s) {
-  vector<double> grades;
-  
-  transform(
-    s.begin(),
-    s.end(),
-    back_inserter(grades),
-    ComputeAverageGradeWrapper
-  );
-
-  return ComputeMedian(grades);
-}

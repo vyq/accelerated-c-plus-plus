@@ -20,29 +20,3 @@ double ComputeMedian(vector<double> v) {
 
   return size % 2 == 0 ? (v[middle] + v[middle - 1]) / 2 : v[middle];
 }
-
-double ComputeMedian(const vector<Student>& s) {
-  vector<double> grades;
-
-  transform(
-    s.begin(),
-    s.end(),
-    back_inserter(grades),
-    ComputeGradeWrapper
-  );
-
-  return ComputeMedian(grades);
-}
-
-double ComputeOptimisticMedian(const vector<Student>& s) {
-  vector<double> grades;
-
-  transform(
-    s.begin(),
-    s.end(),
-    back_inserter(grades),
-    ComputeOptimisticMedianGradeWrapper
-  );
-
-  return ComputeMedian(grades);
-}
