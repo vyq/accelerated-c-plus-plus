@@ -16,36 +16,6 @@
 using namespace std;
 using namespace std::chrono;
 
-double ComputeGrade(string name, const vector<Student>& s) {
-  vector<double> grades;
-
-  if (name == "Median")
-    transform(
-      s.begin(),
-      s.end(),
-      back_inserter(grades),
-      ComputeGradeWrapper
-    );
-  else if (name == "Optimistic Median")
-    transform(
-      s.begin(),
-      s.end(),
-      back_inserter(grades),
-      ComputeOptimisticMedianGradeWrapper
-    );
-  else if (name == "Average")
-    transform(
-      s.begin(),
-      s.end(),
-      back_inserter(grades),
-      ComputeAverageGradeWrapper
-    );
-  else
-    throw domain_error("Invalid central tendency.");
-
-  return ComputeMedian(grades);
-}
-
 void ReadFromFile(
   container_type& s,
   string::size_type& l,

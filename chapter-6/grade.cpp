@@ -39,6 +39,36 @@ double ComputeGrade(const Student& s) {
   return ComputeGrade(s.midterm, s.final, s.homework);
 }
 
+double ComputeGrade(string name, const vector<Student>& s) {
+  vector<double> grades;
+
+  if (name == "Median")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeGradeWrapper
+    );
+  else if (name == "Optimistic Median")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeOptimisticMedianGradeWrapper
+    );
+  else if (name == "Average")
+    transform(
+      s.begin(),
+      s.end(),
+      back_inserter(grades),
+      ComputeAverageGradeWrapper
+    );
+  else
+    throw domain_error("Invalid central tendency.");
+
+  return ComputeMedian(grades);
+}
+
 double ComputeGradeWrapper(const Student& s) {
   try {
     return ComputeGrade(s);
