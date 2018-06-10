@@ -162,5 +162,6 @@ Learn C++
 
 # to-do
 
-- Read page 173 exercise 6-6 of Accelerated C++
+- Read http://www.dummies.com/programming/cpp/passing-arguments-to-functions-in-c/
+- Read page 173 exercise 6-7 of Accelerated C++
 - Read page 74 section 3.3.2 of The C++ Programming Language
