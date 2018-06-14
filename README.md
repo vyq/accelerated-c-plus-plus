@@ -160,6 +160,7 @@ Learn C++
 - A [copy constructor](https://en.wikipedia.org/wiki/Copy_constructor_(C%2B%2B)) creates a new object as a copy of another object
 - An [assignment operator](https://en.wikipedia.org/wiki/Assignment_operator_(C%2B%2B)) can be overloaded to perform a [deep copy](https://en.wikipedia.org/wiki/Object_copying#Deep_copy)
 - `&&` refers to a [rvalue reference](https://en.wikipedia.org/wiki/C%2B%2B11#Rvalue_references_and_move_constructors) that no one else can assign to. The pointer to the rvalue is set to `nullptr`, so that the memory is not freed when the rvalue goes out of scope
+- Use handles to eliminate resource leaks and achieve strong resource safety
 
 # to-do
 
