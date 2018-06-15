@@ -92,6 +92,7 @@ Learn C++
 - 5-8: The function would `throw` a `std::length_error` exception
 - 6-3: The program fragment throws a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) error
 - 6-4: Fix the error in 6-3 by either initializing `v` with a fill constructor, or initializing `w` with a copy constructor. The first approach provides more flexibility by separating the initialization and copy steps. The disadvantage is slower performance as each element in `v` is initialized with `0`. The second approach is faster as each element in `u` is copied to `w` during initialization. The disadvantage is less flexibility in selecting the elements to copy
+- 6-7: Skipped as `GetFailStudents()` has been refactored and is not similar to `IsHomeworkDone()`. `GetFailStudents()` mutates `s` using [`stable_partition`](http://www.cplusplus.com/reference/algorithm/stable_partition/) and returns `container_type`, while `IsHomeworkDone()` does not mutate `s` and returns `bool`
 
 # takeaway
 
