@@ -153,8 +153,36 @@ int main() {
     "Students with final grades greater than midterm grades" <<
     endl;
 
-  // Invariant: Output all grades read from students so far
+  // Invariant: Output all grades read so far
   for (auto& student: greater_than) {
+    cout <<
+      student.name <<
+      string(longest_name_length - student.name.size(), ' ') <<
+      ": ";
+
+    try {
+      streamsize precision {cout.precision()};
+      cout << setprecision(3) <<
+      student.final_grade <<
+      setprecision(precision);
+    } catch (length_error e) {
+      cout << e.what();
+    }
+
+    cout << endl;
+  }
+
+  container_type not_greater_than {
+    GetFinalNotGreaterThanMidtermStudents(students)
+  };
+
+  cout <<
+    endl <<
+    "Students with final grades not greater than midterm grades" <<
+    endl;
+
+  // Invariant: Output all grades read so far
+  for (auto& student: not_greater_than) {
     cout <<
       student.name <<
       string(longest_name_length - student.name.size(), ' ') <<
