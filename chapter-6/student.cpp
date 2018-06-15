@@ -16,7 +16,7 @@ bool Compare(const Student& x, const Student& y) {
 
 container_type GetFailStudents(container_type& s) {
   container_type::iterator iterator {
-    stable_partition(s.begin(), s.end(), IsFailGrade)
+    stable_partition(s.begin(), s.end(), IsPassGrade)
   };
   container_type fail(iterator, s.end());
   s.erase(iterator, s.end());
