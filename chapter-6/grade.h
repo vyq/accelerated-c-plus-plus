@@ -16,5 +16,7 @@ double ComputeOptimisticMedianGrade(const Student&);
 double ComputeOptimisticMedianGradeWrapper(const Student&);
 bool IsFailGrade(const Student&);
 bool IsPassGrade(const Student&);
+bool IsFinalGreaterThanMidterm(const Student&);
+bool IsFinalNotGreaterThanMidterm(const Student&);
 
 #endif

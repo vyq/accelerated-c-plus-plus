@@ -116,3 +116,11 @@ bool IsFailGrade(const Student& s) {
 bool IsPassGrade(const Student& s) {
   return !IsFailGrade(s);
 }
+
+bool IsFinalGreaterThanMidterm(const Student& s) {
+  return s.final > s.midterm;
+}
+
+bool IsFinalNotGreaterThanMidterm(const Student& s) {
+  return !IsFinalGreaterThanMidterm(s);
+}

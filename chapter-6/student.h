@@ -18,6 +18,7 @@ typedef std::list<Student> container_type;
 
 bool Compare(const Student&, const Student&);
 container_type GetFailStudents(container_type&);
+container_type GetFinalGreaterThanMidtermStudents(container_type);
 bool IsHomeworkDone(const Student&);
 std::istream& Read(std::istream&, Student&);
 std::ifstream& Read(

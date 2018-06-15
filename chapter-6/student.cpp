@@ -24,6 +24,16 @@ container_type GetFailStudents(container_type& s) {
   return fail;
 }
 
+container_type GetFinalGreaterThanMidtermStudents(container_type s) {
+  container_type::iterator iterator {
+    stable_partition(s.begin(), s.end(), IsFinalGreaterThanMidterm)
+  };
+  container_type greater_than(iterator, s.end());
+  s.erase(iterator, s.end());
+
+  return s;
+}
+
 bool IsHomeworkDone(const Student& s) {
   return (
     find(s.homework.begin(), s.homework.end(), 0) ==

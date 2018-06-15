@@ -144,6 +144,34 @@ int main() {
 
   SortStudents(students);
 
+  container_type greater_than {
+    GetFinalGreaterThanMidtermStudents(students)
+  };
+
+  cout <<
+    endl <<
+    "Students with final grades greater than midterm grades" <<
+    endl;
+
+  // Invariant: Output all grades read from students so far
+  for (auto& student: greater_than) {
+    cout <<
+      student.name <<
+      string(longest_name_length - student.name.size(), ' ') <<
+      ": ";
+
+    try {
+      streamsize precision {cout.precision()};
+      cout << setprecision(3) <<
+      student.final_grade <<
+      setprecision(precision);
+    } catch (length_error e) {
+      cout << e.what();
+    }
+
+    cout << endl;
+  }
+
   container_type fail_students {GetFailStudents(students)};
 
   cout << endl << "Pass students" << endl;
