@@ -164,6 +164,7 @@ Learn C++
 - Use handles to eliminate resource leaks and achieve strong resource safety
 - New elements in [`map`](http://www.cplusplus.com/reference/map/map/map/) are [value-initialized](http://en.cppreference.com/w/cpp/language/value_initialization) when a key does not exist
 - Each element in a `map` is a [`pair`](http://www.cplusplus.com/reference/utility/pair/)
+- Space not required between `>>` in `map<string, vector<int>>` when using g++ 8.1 compiler
 
 # to-do
 
