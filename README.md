@@ -162,6 +162,7 @@ Learn C++
 - An [assignment operator](https://en.wikipedia.org/wiki/Assignment_operator_(C%2B%2B)) can be overloaded to perform a [deep copy](https://en.wikipedia.org/wiki/Object_copying#Deep_copy)
 - `&&` refers to a [rvalue reference](https://en.wikipedia.org/wiki/C%2B%2B11#Rvalue_references_and_move_constructors) that no one else can assign to. The pointer to the rvalue is set to `nullptr`, so that the memory is not freed when the rvalue goes out of scope
 - Use handles to eliminate resource leaks and achieve strong resource safety
+- New elements in `map` are [value-initialized](http://en.cppreference.com/w/cpp/language/value_initialization) when a key does not exist
 
 # to-do
 
