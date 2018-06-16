@@ -22,7 +22,7 @@ map<string, vector<int>> GetLineNumbers(
 
     // Invariant: Saved line_number for all words processed so far
     for (
-      vector<string>::const_iterator iterator = words.begin();
+      vector<string>::const_iterator iterator {words.begin()};
       iterator != words.end();
       ++iterator
     )
@@ -37,13 +37,17 @@ int main() {
 
   // Invariant: Wrote all words processed so far
   for (
-    map<string, vector<int>>::const_iterator iterator = line_numbers.begin();
+    map<string, vector<int>>::const_iterator iterator {
+      line_numbers.begin()
+    };
     iterator != line_numbers.end();
     ++iterator
   ) {
     cout << iterator->first << " occurs on line(s): ";
     
-    vector<int>::const_iterator line_iterator {iterator->second.begin()};
+    vector<int>::const_iterator line_iterator {
+      iterator->second.begin()
+    };
     cout << *line_iterator;
     ++line_iterator;
 
