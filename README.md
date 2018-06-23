@@ -165,6 +165,19 @@ Learn C++
 - New elements in [`map`](http://www.cplusplus.com/reference/map/map/map/) are [value-initialized](http://en.cppreference.com/w/cpp/language/value_initialization) when a key does not exist
 - Each element in a `map` is a [`pair`](http://www.cplusplus.com/reference/utility/pair/)
 - Space not required between `>>` in `map<string, vector<int>>` when using g++ 8.1 compiler
+- Use `delete` to suppress the default copy and move operations. Example:
+  ```cpp
+  class Shape {
+    public:
+      Shape(const Shape&) =delete;
+      Shape& operator=(const Shape&) =delete;
+    
+      Shape(Shape&&) =delete;
+      Shape& operator=(Shape&&) =delete;
+    
+      ~Shape();
+  }
+  ```
 
 # to-do
 
