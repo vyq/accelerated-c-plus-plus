@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -21,7 +23,7 @@ int Randomize(int number) {
 
   do result = rand() / bucket_size;
   while (result >= number);
-
+  
   return result;
 }
 
@@ -82,6 +84,7 @@ int main() {
   try {
     string filename {"sentence_input.txt"};
     ifstream file{filename};
+    srand(time(nullptr));
     vector<string> sentence {MakeSentence(ReadGrammar(file))};
   
     vector<string>::const_iterator iterator {sentence.begin()};
