@@ -10,8 +10,17 @@ typedef vector<string> Rule;
 typedef vector<Rule> Rules;
 typedef map<string, Rules> Grammar;
 
-int Randomize(int maximum) {
-  return maximum;
+int Randomize(int number) {
+  if (number <= 0 || number > RAND_MAX)
+    throw out_of_range("Number is out of range");
+
+  const int bucket_size {RAND_MAX / number};
+  int result;
+
+  do result = rand() / bucket_size;
+  while (result >= number);
+
+  return result;
 }
 
 Grammar ReadGrammar(istream& in) {
