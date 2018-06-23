@@ -68,7 +68,27 @@ vector<string> MakeSentence(const Grammar& g) {
 }
 
 int main() {
+  try {
+    vector<string> sentence {MakeSentence(ReadGrammar(cin))};
+  
+    vector<string>::const_iterator iterator {sentence.begin()};
+  
+    if (!sentence.empty()) {
+      cout << *iterator;
+      ++iterator;
+    }
+  
+    while (iterator != sentence.end()) {
+      cout << " " << *iterator;
+      ++iterator;
+    }
+  
+    cout << endl;
+  } catch (domain_error error) {
+    cout << error.what() << endl;
 
+    return 1;
+  }
 
   return 0;
 }
