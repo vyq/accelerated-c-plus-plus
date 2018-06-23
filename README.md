@@ -178,6 +178,8 @@ Learn C++
       ~Shape();
   }
   ```
+- `template<typename T>` makes `T` a parameter of the declaration it prefixes
+- Templates are a [compile time](https://en.wikipedia.org/wiki/Compile_time) mechanism
 
 # to-do
 
