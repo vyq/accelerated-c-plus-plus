@@ -70,10 +70,10 @@ void Expand(
   }
 }
 
-vector<string> MakeSentence(const Grammar& g) {
+vector<string> MakeSentence(const Grammar& grammar) {
   vector<string> result;
 
-  Expand(g, "<sentence>", result);
+  Expand(grammar, "<sentence>", result);
 
   return result;
 }
