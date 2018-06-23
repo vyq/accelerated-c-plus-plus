@@ -1,5 +1,7 @@
+#include <fstream>
 #include <iostream>
 #include <map>
+#include <stdexcept>
 #include <string>
 #include <vector>
 #include "split.h"
@@ -23,12 +25,12 @@ int Randomize(int number) {
   return result;
 }
 
-Grammar ReadGrammar(istream& in) {
+Grammar ReadGrammar(ifstream& fs) {
   Grammar result;
   string line;
 
   // Invariant: Processed all lines read so far
-  while (getline(in, line)) {
+  while (getline(fs, line)) {
     vector<string> items {Split(line)};
 
     if (!items.empty())
@@ -78,7 +80,9 @@ vector<string> MakeSentence(const Grammar& g) {
 
 int main() {
   try {
-    vector<string> sentence {MakeSentence(ReadGrammar(cin))};
+    string filename {"sentence_input.txt"};
+    ifstream file{filename};
+    vector<string> sentence {MakeSentence(ReadGrammar(file))};
   
     vector<string>::const_iterator iterator {sentence.begin()};
   
