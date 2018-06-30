@@ -11,6 +11,7 @@ double ComputeGrade(double, double, double);
 double ComputeGrade(double, double, const std::vector<double>&);
 double ComputeGrade(const Student&);
 double ComputeGrade(std::string, const std::vector<Student>&);
+char ComputeGradeLetter(double);
 double ComputeGradeWrapper(const Student&);
 double ComputeOptimisticMedianGrade(const Student&);
 double ComputeOptimisticMedianGradeWrapper(const Student&);

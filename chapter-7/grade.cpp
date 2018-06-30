@@ -69,6 +69,20 @@ double ComputeGrade(string name, const vector<Student>& s) {
   return ComputeMedian(grades);
 }
 
+char ComputeGradeLetter(double grade) {
+  if (grade >= 90 && grade <= 100)
+    return 'A';
+  else if (grade >= 80 && grade < 90)
+    return 'B';
+  else if (grade >= 70 && grade < 80)
+    return 'C';
+  else if (grade >= 60 && grade < 70)
+    return 'D';
+  else if (grade < 60)
+    return 'F';
+  return '?';
+}
+
 double ComputeGradeWrapper(const Student& s) {
   try {
     return ComputeGrade(s);

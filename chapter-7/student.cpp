@@ -64,6 +64,7 @@ istream& Read(istream& is, Student& s) {
   ReadHomework(is, s.homework);
   
   s.final_grade = ComputeGrade(s.midterm, s.final, s.homework);
+  s.grade_letter = ComputeGradeLetter(s.final_grade);
 
   return is;
 }
@@ -105,6 +106,7 @@ ifstream& Read(
       student.final,
       student.homework
     );
+    student.grade_letter = ComputeGradeLetter(student.final_grade);
 
     s.push_back(student);
 

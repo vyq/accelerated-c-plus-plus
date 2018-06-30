@@ -8,7 +8,7 @@
 #include <vector>
 
 struct Student {
-  std::string name;
+  std::string name, grade_letter;
   std::vector<double> homework;
   double midterm, final, final_grade;
 };

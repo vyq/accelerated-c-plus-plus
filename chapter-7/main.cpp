@@ -165,6 +165,8 @@ int main() {
       cout << setprecision(3) <<
       student.final_grade <<
       setprecision(precision);
+
+      cout << "\t" << student.grade_letter;
     } catch (length_error e) {
       cout << e.what();
     }
@@ -193,6 +195,8 @@ int main() {
       cout << setprecision(3) <<
       student.final_grade <<
       setprecision(precision);
+
+      cout << "\t" << student.grade_letter;
     } catch (length_error e) {
       cout << e.what();
     }
@@ -216,6 +220,8 @@ int main() {
       cout << setprecision(3) <<
       student.final_grade <<
       setprecision(precision);
+
+      cout << "\t" << student.grade_letter;
     } catch (length_error e) {
       cout << e.what();
     }
@@ -237,6 +243,8 @@ int main() {
       cout << setprecision(3) <<
       student.final_grade <<
       setprecision(precision);
+
+      cout << "\t" << student.grade_letter;
     } catch (length_error e) {
       cout << e.what();
     }
@@ -247,8 +255,7 @@ int main() {
   high_resolution_clock::time_point end {
     high_resolution_clock::now()
   };
-
-  WriteComparison("Median", ComputeGrade, done, not_done);
+WriteComparison("Median", ComputeGrade, done, not_done);
   WriteComparison(
     "Optimistic Median",
     ComputeGrade,
