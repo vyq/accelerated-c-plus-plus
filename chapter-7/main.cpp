@@ -108,6 +108,7 @@ int main() {
   vector<Student> done, not_done;
   string::size_type longest_name_length {0};
   high_resolution_clock::time_point start;
+  map<string, int> grade_letter_count;
 
   try {
     cout << "Get student grades from standard input or file?" << endl;
@@ -252,10 +253,28 @@ int main() {
     cout << endl;
   }
 
+  cout << endl << "Grade letter counts" << endl;
+
+  // Invariant: Count all grade letters read so far
+  for (auto& student: students)
+    ++grade_letter_count[student.grade_letter];
+
+  // Invariant: Count all grade letters read so far
+  for (auto& student: fail_students)
+    ++grade_letter_count[student.grade_letter];
+
+  for (
+    map<string, int>::const_iterator iterator = grade_letter_count.begin();
+    iterator != grade_letter_count.end();
+    ++iterator
+  ) {
+    cout << iterator->first << "\t" << iterator->second << endl;
+  }
+
   high_resolution_clock::time_point end {
     high_resolution_clock::now()
   };
-WriteComparison("Median", ComputeGrade, done, not_done);
+  WriteComparison("Median", ComputeGrade, done, not_done);
   WriteComparison(
     "Optimistic Median",
     ComputeGrade,
