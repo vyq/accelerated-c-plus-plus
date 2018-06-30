@@ -3,7 +3,10 @@ standard = -std=c++17
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: count line_numbers sentence
+all: main count line_numbers sentence
+
+main:
+	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp split.cpp average.cpp
 
 count:
 	$(flags) count.out count.cpp
