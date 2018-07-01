@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <string>
@@ -44,15 +45,22 @@ int main() {
     ++iterator
   ) {
     cout << iterator->first << " occurs on line(s): ";
+
+    vector<int> distinct_lines {iterator->second};
+    sort(distinct_lines.begin(), distinct_lines.end());
+    distinct_lines.erase(
+      unique(distinct_lines.begin(), distinct_lines.end()),
+      distinct_lines.end()
+    );
     
     vector<int>::const_iterator line_iterator {
-      iterator->second.begin()
+      distinct_lines.begin()
     };
     cout << *line_iterator;
     ++line_iterator;
 
     // Invariant: Wrote all line numbers processed so far
-    while (line_iterator != iterator->second.end()) {
+    while (line_iterator != distinct_lines.end()) {
       cout << ", " << *line_iterator;
       ++line_iterator;
     }
