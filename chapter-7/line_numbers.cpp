@@ -48,6 +48,7 @@ int main() {
   map<string, vector<int>> line_numbers {GetLineNumbers(cin)};
   const int kOutputColumns {72};
   const string kPrefix {" occurs on line(s): "};
+  const string kSeparator {", "};
 
   // Invariant: Wrote all words processed so far
   for (
@@ -89,8 +90,10 @@ int main() {
         output_length = 0;
       }
 
-      cout << ", " << *line_iterator;
-      output_length += CountDigits(*line_iterator);
+      cout << kSeparator << *line_iterator;
+      output_length +=
+        kSeparator.length() +
+        CountDigits(*line_iterator);
       ++line_iterator;
     }
 
