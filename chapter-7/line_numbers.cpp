@@ -7,6 +7,17 @@
 
 using namespace std;
 
+int CountDigits(int number) {
+  int count {0};
+
+  while (number > 0) {
+    number /= 10;
+    ++count;
+  }
+
+  return count;
+}
+
 map<string, vector<int>> GetLineNumbers(
   istream& in,
   vector<string> FindWords(const string&) = Split 
@@ -35,6 +46,8 @@ map<string, vector<int>> GetLineNumbers(
 
 int main() {
   map<string, vector<int>> line_numbers {GetLineNumbers(cin)};
+  const int kOutputColumns {72};
+  const string kPrefix {" occurs on line(s): "};
 
   // Invariant: Wrote all words processed so far
   for (
@@ -44,7 +57,10 @@ int main() {
     iterator != line_numbers.end();
     ++iterator
   ) {
-    cout << iterator->first << " occurs on line(s): ";
+    int output_length {0};
+
+    cout << iterator->first << kPrefix;
+    output_length += iterator->first.length() + kPrefix.length();
 
     vector<int> distinct_lines {iterator->second};
     sort(distinct_lines.begin(), distinct_lines.end());
@@ -56,12 +72,25 @@ int main() {
     vector<int>::const_iterator line_iterator {
       distinct_lines.begin()
     };
+
+    if (output_length >= kOutputColumns) {
+      cout << endl;
+      output_length = 0;
+    }
+
     cout << *line_iterator;
+    output_length += CountDigits(*line_iterator);
     ++line_iterator;
 
     // Invariant: Wrote all line numbers processed so far
     while (line_iterator != distinct_lines.end()) {
+      if (output_length >= kOutputColumns) {
+        cout << endl;
+        output_length = 0;
+      }
+
       cout << ", " << *line_iterator;
+      output_length += CountDigits(*line_iterator);
       ++line_iterator;
     }
 
