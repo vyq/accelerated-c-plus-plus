@@ -2,6 +2,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <list>
 #include <map>
 #include <stdexcept>
 #include <string>
@@ -49,7 +50,7 @@ bool IsTag(const string& s) {
 void Expand(
   const Grammar& grammar,
   const string& word,
-  vector<string>& result
+  list<string>& result
 ) {
   if (!IsTag(word)) {
     result.push_back(word);
@@ -72,8 +73,8 @@ void Expand(
   }
 }
 
-vector<string> MakeSentence(const Grammar& grammar) {
-  vector<string> result;
+list<string> MakeSentence(const Grammar& grammar) {
+  list<string> result;
 
   Expand(grammar, "<sentence>", result);
 
@@ -85,9 +86,9 @@ int main() {
     string filename {"sentence_input.txt"};
     ifstream file{filename};
     srand(time(nullptr));
-    vector<string> sentence {MakeSentence(ReadGrammar(file))};
+    list<string> sentence {MakeSentence(ReadGrammar(file))};
   
-    vector<string>::const_iterator iterator {sentence.begin()};
+    list<string>::const_iterator iterator {sentence.begin()};
   
     if (!sentence.empty()) {
       cout << *iterator;
