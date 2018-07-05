@@ -81,12 +81,40 @@ list<string> MakeSentence(const Grammar& grammar) {
   return result;
 }
 
+bool HasTag(string sentence) {
+  vector<string> items {Split(sentence)};
+
+  for (
+    vector<string>::const_iterator iterator = items.begin();
+    iterator != items.end();
+    ++iterator
+  ) {
+    if (IsTag(*iterator))
+      return true;
+  }
+
+  return false;
+}
+
+vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
+  vector<string> result;
+  Rules rules;
+  string sentence {"sentence"};
+
+  cout << HasTag(sentence) << endl;
+
+  return result;
+}
+
 int main() {
   try {
     string filename {"sentence_input.txt"};
     ifstream file{filename};
     srand(time(nullptr));
     list<string> sentence {MakeSentence(ReadGrammar(file))};
+    vector<string> sentence_non_recursive {
+      MakeSentenceNonRecursive(ReadGrammar(file))
+    };
   
     list<string>::const_iterator iterator {sentence.begin()};
   
