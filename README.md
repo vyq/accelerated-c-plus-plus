@@ -183,5 +183,6 @@ Learn C++
 
 # to-do
 
+- Debug why file can only be read once using `ReadGrammar(file)`
 - Read page 194 section 7.6 of Accelerated C++
 - Read page 80 section 3.4.3 of The C++ Programming Language

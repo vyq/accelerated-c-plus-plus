@@ -111,6 +111,7 @@ int main() {
     string filename {"sentence_input.txt"};
     ifstream file{filename};
     srand(time(nullptr));
+    // cout << ReadGrammar(file).size() << endl;
     list<string> sentence {MakeSentence(ReadGrammar(file))};
     vector<string> sentence_non_recursive {
       MakeSentenceNonRecursive(ReadGrammar(file))
