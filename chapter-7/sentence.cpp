@@ -99,9 +99,9 @@ bool HasTag(string sentence) {
 vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
   vector<string> result;
   Rules rules;
-  string sentence {"sentence"};
+  const string word = "<sentence>";
 
-  cout << HasTag(sentence) << endl;
+  cout << HasTag(word) << endl;
 
   return result;
 }
