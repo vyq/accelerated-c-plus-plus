@@ -109,9 +109,13 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 int main() {
   try {
     string filename {"sentence_input.txt"};
-    ifstream file{filename};
+    ifstream file {filename};
     srand(time(nullptr));
-    // cout << ReadGrammar(file).size() << endl;
+
+    cout << ReadGrammar(file).size() << endl;
+    file.clear();
+    file.seekg(0, file.beg);
+
     list<string> sentence {MakeSentence(ReadGrammar(file))};
     vector<string> sentence_non_recursive {
       MakeSentenceNonRecursive(ReadGrammar(file))
