@@ -81,12 +81,10 @@ list<string> MakeSentence(const Grammar& grammar) {
   return result;
 }
 
-bool HasTag(string sentence) {
-  vector<string> items {Split(sentence)};
-
+bool HasTag(vector<string>& sentence) {
   for (
-    vector<string>::const_iterator iterator = items.begin();
-    iterator != items.end();
+    vector<string>::const_iterator iterator = sentence.begin();
+    iterator != sentence.end();
     ++iterator
   ) {
     if (IsTag(*iterator))
@@ -97,19 +95,16 @@ bool HasTag(string sentence) {
 }
 
 vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
-  vector<string> result;
+  vector<string> sentence {"<sentence>"};
   Rules rules;
-  string sentence {"the <noun-phrase> <verb> <location>"};
 
-  cout << HasTag(sentence) << endl;
-
-  // Get sentence in grammar
   // Check if sentence still has tags
+  cout  << HasTag(sentence) << endl;
   // For each tag in sentence
   // Search for corresponding rule
   // Replace tag with rule
 
-  return result;
+  return sentence;
 }
 
 int main() {
