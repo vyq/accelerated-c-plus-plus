@@ -100,7 +100,23 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 
   // Invariant: Processed all tags so far
   while (HasTag(sentence)) {
-    cout  << HasTag(sentence) << endl;
+    for (
+      vector<string>::const_iterator iterator = sentence.begin();
+      iterator != sentence.end();
+      ++iterator
+    ) {
+      string word {*iterator};
+
+      if (IsTag(word)) {
+        Grammar::const_iterator iterator {grammar.find(word)};
+
+        const Rules& rules {iterator->second};
+        const Rule& rule {rules[Randomize(rules.size())]};
+
+        cout << word << endl;
+      }
+    }
+
     sentence.clear();
     sentence.push_back("foo");
   }
