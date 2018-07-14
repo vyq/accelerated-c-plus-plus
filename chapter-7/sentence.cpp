@@ -81,7 +81,7 @@ list<string> MakeSentence(const Grammar& grammar) {
   return result;
 }
 
-bool HasTag(vector<string>& sentence) {
+bool HasTag(const vector<string>& sentence) {
   for (
     vector<string>::const_iterator iterator = sentence.begin();
     iterator != sentence.end();
@@ -98,9 +98,12 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
   vector<string> sentence {"<sentence>"};
   Rules rules;
 
-  // Check if sentence still has tags
-  cout  << HasTag(sentence) << endl;
-  // For each tag in sentence
+  // Invariant: Processed all tags so far
+  while (HasTag(sentence)) {
+    cout  << HasTag(sentence) << endl;
+    sentence.clear();
+    sentence.push_back("foo");
+  }
   // Search for corresponding rule
   // Replace tag with rule
 
