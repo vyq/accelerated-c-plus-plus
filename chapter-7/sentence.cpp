@@ -103,6 +103,12 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 
   cout << HasTag(sentence) << endl;
 
+  // Get sentence in grammar
+  // Check if sentence still has tags
+  // For each tag in sentence
+  // Search for corresponding rule
+  // Replace tag with rule
+
   return result;
 }
 
