@@ -103,7 +103,8 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 
   // Invariant: Processed all rules read so far
   while (!rules.empty()) {
-    rule = rules.front();
+    rule = rules.back();
+    rules.pop_back();
 
     for (
       Rule::const_iterator iterator = rule.begin();
@@ -116,21 +117,18 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
         sentence.push_back(word);
       } else {
         Grammar::const_iterator grammar_iterator {grammar.find(word)};
-    
+
         if (grammar_iterator == grammar.end())
           throw domain_error("Invalid rule");
-    
+
         const Rules& matching_rules {grammar_iterator->second};
         const Rule& matching_rule {
           matching_rules[Randomize(matching_rules.size())]
         };
 
-        for (auto& item : matching_rule)
-          cout << item << endl;
+        rules.push_back(matching_rule);
       }
     }
-
-    rules.pop_back();
   }
 
   return sentence;
@@ -150,11 +148,11 @@ int main() {
     vector<string> sentence_non_recursive {
       MakeSentenceNonRecursive(ReadGrammar(file))
     };
-  
+
     list<string>::const_iterator iterator {sentence.begin()};
   
     if (!sentence.empty()) {
-      cout << *iterator;
+      cout << "Recursive: " << *iterator;
       ++iterator;
     }
   
@@ -163,6 +161,12 @@ int main() {
       ++iterator;
     }
   
+    cout << endl;
+    cout << "Non-recursive: ";
+
+    for (auto& word : sentence_non_recursive)
+      cout << word << " ";
+
     cout << endl;
   } catch (domain_error error) {
     cout << error.what() << endl;
