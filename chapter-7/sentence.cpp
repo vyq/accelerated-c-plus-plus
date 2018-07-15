@@ -103,8 +103,8 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 
   // Invariant: Processed all rules read so far
   while (!rules.empty()) {
-    rule = rules.back();
-    rules.pop_back();
+    rule = rules.front();
+    rules.erase(rules.begin());
 
     for (
       Rule::const_iterator iterator = rule.begin();
