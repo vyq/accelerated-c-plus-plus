@@ -113,6 +113,14 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
         const Rules& rules {iterator->second};
         const Rule& rule {rules[Randomize(rules.size())]};
 
+        for (
+          Rule::const_iterator rule_iterator = rule.begin();
+          rule_iterator != rule.end();
+          ++rule_iterator
+        ) {
+          cout << *rule_iterator << endl;
+        }
+
         cout << word << endl;
       }
     }
@@ -120,7 +128,7 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
     sentence.clear();
     sentence.push_back("foo");
   }
-  // Search for corresponding rule
+
   // Replace tag with rule
 
   return sentence;
@@ -137,6 +145,10 @@ int main() {
     file.seekg(0, file.beg);
 
     list<string> sentence {MakeSentence(ReadGrammar(file))};
+    
+    file.clear();
+    file.seekg(0, file.beg);
+
     vector<string> sentence_non_recursive {
       MakeSentenceNonRecursive(ReadGrammar(file))
     };
