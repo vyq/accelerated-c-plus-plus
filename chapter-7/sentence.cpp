@@ -96,7 +96,6 @@ bool HasTag(const vector<string>& sentence) {
 
 vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
   vector<string> sentence {"<sentence>"};
-  Rules rules;
 
   // Invariant: Processed all tags so far
   while (HasTag(sentence)) {
@@ -120,8 +119,6 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
         ) {
           cout << *rule_iterator << endl;
         }
-
-        cout << word << endl;
       }
     }
 
@@ -139,10 +136,6 @@ int main() {
     string filename {"sentence_input.txt"};
     ifstream file {filename};
     srand(time(nullptr));
-
-    cout << ReadGrammar(file).size() << endl;
-    file.clear();
-    file.seekg(0, file.beg);
 
     list<string> sentence {MakeSentence(ReadGrammar(file))};
     
