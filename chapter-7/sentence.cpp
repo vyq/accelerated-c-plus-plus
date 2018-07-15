@@ -95,38 +95,43 @@ bool HasTag(const vector<string>& sentence) {
 }
 
 vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
-  vector<string> sentence {"<sentence>"};
+  vector<string> sentence;
+  Rule rule {"<sentence>"};
+  Rules rules;
 
-  // Invariant: Processed all tags so far
-  while (HasTag(sentence)) {
+  rules.push_back(rule);
+
+  // Invariant: Processed all rules read so far
+  while (!rules.empty()) {
+    rule = rules.front();
+
     for (
-      vector<string>::const_iterator iterator = sentence.begin();
-      iterator != sentence.end();
+      Rule::const_iterator iterator = rule.begin();
+      iterator != rule.end();
       ++iterator
     ) {
       string word {*iterator};
 
-      if (IsTag(word)) {
-        Grammar::const_iterator iterator {grammar.find(word)};
+      if (!IsTag(word)) {
+        sentence.push_back(word);
+      } else {
+        Grammar::const_iterator grammar_iterator {grammar.find(word)};
+    
+        if (grammar_iterator == grammar.end())
+          throw domain_error("Invalid rule");
+    
+        const Rules& matching_rules {grammar_iterator->second};
+        const Rule& matching_rule {
+          matching_rules[Randomize(matching_rules.size())]
+        };
 
-        const Rules& rules {iterator->second};
-        const Rule& rule {rules[Randomize(rules.size())]};
-
-        for (
-          Rule::const_iterator rule_iterator = rule.begin();
-          rule_iterator != rule.end();
-          ++rule_iterator
-        ) {
-          cout << *rule_iterator << endl;
-        }
+        for (auto& item : matching_rule)
+          cout << item << endl;
       }
     }
 
-    sentence.clear();
-    sentence.push_back("foo");
+    rules.pop_back();
   }
-
-  // Replace tag with rule
 
   return sentence;
 }
