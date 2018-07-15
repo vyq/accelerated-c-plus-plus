@@ -96,37 +96,36 @@ bool HasTag(const vector<string>& sentence) {
 
 vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
   vector<string> sentence;
-  Rule rule {"<sentence>"};
-  Rules rules;
+  Rules rules {Rule{"<sentence>"}};
 
-  rules.push_back(rule);
-
-  // Invariant: Processed all rules read so far
   while (!rules.empty()) {
-    rule = rules.front();
-    rules.erase(rules.begin());
+    Rule rule = rules.back();
+    rules.pop_back();
 
-    for (
-      Rule::const_iterator iterator = rule.begin();
-      iterator != rule.end();
-      ++iterator
-    ) {
-      string word {*iterator};
+    if (HasTag(rule)) {
+      for (auto& word : rule) {
+        if (IsTag(word)) {
+          Grammar::const_iterator iterator {grammar.find(word)};
 
-      if (!IsTag(word)) {
-        sentence.push_back(word);
-      } else {
-        Grammar::const_iterator grammar_iterator {grammar.find(word)};
+          if (iterator == grammar.end())
+            throw domain_error("Invalid rule");
 
-        if (grammar_iterator == grammar.end())
-          throw domain_error("Invalid rule");
-
-        const Rules& matching_rules {grammar_iterator->second};
-        const Rule& matching_rule {
-          matching_rules[Randomize(matching_rules.size())]
-        };
-
-        rules.push_back(matching_rule);
+          const Rules& matching_rules {iterator->second};
+          const Rule& matching_rule {
+            matching_rules[Randomize(matching_rules.size())]
+          };
+          rules.push_back(matching_rule);
+        } else {
+          rules.push_back(Rule{word});
+        }
+      }
+    } else {
+      for (
+        Rule::const_reverse_iterator iterator = rule.rbegin();
+        iterator != rule.rend();
+        ++iterator
+      ) {
+        sentence.push_back(*iterator);
       }
     }
   }
@@ -164,9 +163,13 @@ int main() {
     cout << endl;
     cout << "Non-recursive: ";
 
-    for (auto& word : sentence_non_recursive)
-      cout << word << " ";
-
+    for (
+      vector<string>::const_reverse_iterator iterator = sentence_non_recursive.rbegin();
+      iterator != sentence_non_recursive.rend();
+      ++iterator
+    ) {
+      cout << *iterator << " ";
+    }
     cout << endl;
   } catch (domain_error error) {
     cout << error.what() << endl;
