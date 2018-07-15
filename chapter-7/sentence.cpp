@@ -164,7 +164,8 @@ int main() {
     cout << "Non-recursive: ";
 
     for (
-      vector<string>::const_reverse_iterator iterator = sentence_non_recursive.rbegin();
+      vector<string>::const_reverse_iterator iterator = 
+        sentence_non_recursive.rbegin();
       iterator != sentence_non_recursive.rend();
       ++iterator
     ) {
