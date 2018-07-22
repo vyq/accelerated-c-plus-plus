@@ -180,8 +180,9 @@ Learn C++
   ```
 - `template<typename T>` makes `T` a parameter of the declaration it prefixes
 - Templates are a [compile time](https://en.wikipedia.org/wiki/Compile_time) mechanism
+- A [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) is a function that returns `true` or `false`
 
 # to-do
 
 - Read page 194 section 7.7 of Accelerated C++
-- Read page 80 section 3.4.3 of The C++ Programming Language
+- Read page 82 section 3.4.4 of The C++ Programming Language
