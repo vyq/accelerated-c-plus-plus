@@ -70,7 +70,7 @@ int main() {
       unique(distinct_lines.begin(), distinct_lines.end()),
       distinct_lines.end()
     );
-    
+
     vector<int>::const_iterator line_iterator {
       distinct_lines.begin()
     };
