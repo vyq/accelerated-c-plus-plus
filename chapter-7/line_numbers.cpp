@@ -27,7 +27,8 @@ map<string, vector<int>> GetLineNumbers(
   map<string, vector<int>> line_numbers;
 
   // Invariant: Processed all lines read so far
-  while (getline(in, line)) {
+  do {
+    getline(in, line);
     ++line_number;
 
     vector<string> words {FindWords(line)};
@@ -39,7 +40,7 @@ map<string, vector<int>> GetLineNumbers(
       ++iterator
     )
       line_numbers[*iterator].push_back(line_number);
-  }
+  } while (!in.eof());
 
   return line_numbers;
 }
