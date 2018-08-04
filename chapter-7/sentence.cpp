@@ -22,7 +22,7 @@ int Randomize(int number) {
   if (number <= 0 || number > device.max())
     throw out_of_range("Number is out of range");
 
-  const int bucket_size {device.max() / number};
+  const unsigned int bucket_size {device.max() / number};
   int result;
 
   do result = device() / bucket_size;
