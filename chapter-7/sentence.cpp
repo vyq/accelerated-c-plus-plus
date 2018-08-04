@@ -7,7 +7,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <boost/random.hpp>
 #include "split.h"
 
 using namespace std;
@@ -15,12 +14,6 @@ using namespace std;
 typedef vector<string> Rule;
 typedef vector<Rule> Rules;
 typedef map<string, Rules> Grammar;
-
-boost::random::mt19937 generator;
-boost::random::uniform_int_distribution<uint64_t> GenerateRandomNumber(
-  0,
-  generator.max()
-);
 
 int Randomize(int number) {
   if (number <= 0 || number > RAND_MAX)
@@ -141,8 +134,6 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 }
 
 int main() {
-  cout << GenerateRandomNumber(generator) << endl;
-
   try {
     string filename {"sentence_input.txt"};
     ifstream file {filename};

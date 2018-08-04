@@ -1,8 +1,7 @@
 compiler = g++-8
 standard = -std=c++17
-library = -L$(CURDIR)/../lib/boost_1_67_0/stage/lib
 output = -o
-flags = $(compiler) $(standard) $(library) $(output)
+flags = $(compiler) $(standard) $(output)
 
 all: main count line_numbers sentence
 
