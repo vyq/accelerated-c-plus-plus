@@ -1,6 +1,6 @@
 compiler = g++-8
 standard = -std=c++17
-library = -L/home/user/accelerated-c-plus-plus/lib/boost_1_67_0/stage/lib
+library = -L$(CURDIR)/../lib/boost_1_67_0/stage/lib
 output = -o
 flags = $(compiler) $(standard) $(library) $(output)
 

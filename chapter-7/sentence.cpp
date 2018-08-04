@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <boost/random.hpp>
 #include "split.h"
 
 using namespace std;
@@ -134,6 +135,10 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 }
 
 int main() {
+  boost::random::mt19937 rng;
+  boost::random::uniform_int_distribution<> six(1,6);
+  cout << six(rng) << endl;
+
   try {
     string filename {"sentence_input.txt"};
     ifstream file {filename};
