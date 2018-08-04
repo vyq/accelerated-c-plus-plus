@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <random>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -16,13 +17,15 @@ typedef vector<Rule> Rules;
 typedef map<string, Rules> Grammar;
 
 int Randomize(int number) {
-  if (number <= 0 || number > RAND_MAX)
+  random_device device;
+
+  if (number <= 0 || number > device.max())
     throw out_of_range("Number is out of range");
 
-  const int bucket_size {RAND_MAX / number};
+  const int bucket_size {device.max() / number};
   int result;
 
-  do result = rand() / bucket_size;
+  do result = device() / bucket_size;
   while (result >= number);
   
   return result;
