@@ -16,6 +16,12 @@ typedef vector<string> Rule;
 typedef vector<Rule> Rules;
 typedef map<string, Rules> Grammar;
 
+boost::random::mt19937 generator;
+boost::random::uniform_int_distribution<uint64_t> GenerateRandomNumber(
+  0,
+  generator.max()
+);
+
 int Randomize(int number) {
   if (number <= 0 || number > RAND_MAX)
     throw out_of_range("Number is out of range");
@@ -135,9 +141,7 @@ vector<string> MakeSentenceNonRecursive(const Grammar& grammar) {
 }
 
 int main() {
-  boost::random::mt19937 rng;
-  boost::random::uniform_int_distribution<> six(1,6);
-  cout << six(rng) << endl;
+  cout << GenerateRandomNumber(generator) << endl;
 
   try {
     string filename {"sentence_input.txt"};
