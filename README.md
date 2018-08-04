@@ -187,5 +187,5 @@ Learn C++
 
 # to-do
 
-- Read page 196 section 8 of Accelerated C++
+- Read page 199 section 8.1.2 of Accelerated C++
 - Read page 91 section 4.3 of The C++ Programming Language
