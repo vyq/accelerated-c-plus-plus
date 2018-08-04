@@ -182,6 +182,7 @@ Learn C++
 - Templates are a [compile time](https://en.wikipedia.org/wiki/Compile_time) mechanism
 - A [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) is a function that returns `true` or `false`
 - A [variadic template](https://en.wikipedia.org/wiki/Variadic_template) is a [template](https://en.wikipedia.org/wiki/Template_(C%2B%2B)) that takes a variable number of arguments
+- Use [`random_device`](http://www.cplusplus.com/reference/random/random_device/) to generate non-deterministic random numbers
 
 # to-do
 
