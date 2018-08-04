@@ -1,7 +1,8 @@
 compiler = g++-8
 standard = -std=c++17
+library = -L/home/user/accelerated-c-plus-plus/lib/boost_1_67_0/stage/lib
 output = -o
-flags = $(compiler) $(standard) $(output)
+flags = $(compiler) $(standard) $(library) $(output)
 
 all: main count line_numbers sentence
 
