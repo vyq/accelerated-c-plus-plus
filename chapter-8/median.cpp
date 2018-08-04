@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stdexcept>
 #include <vector>
 
@@ -10,7 +11,7 @@ T ComputeMedian(vector<T> v) {
   size_type size = v.size();
 
   if (size == 0)
-    throw domain_error("Empty vector");
+    throw domain_error("Cannot compute median of empty vector");
 
   sort(v.begin(), v.end());
 
