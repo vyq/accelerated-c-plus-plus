@@ -17,8 +17,8 @@ Learn C++
   another string
   ```
 - 1-4: It is a valid program, regardless of changing `}}` to `};}`
-- 1-5: It is not a valid program as `x` in `std::cout << x << std::endl;` is not defined
-- 1-6: It stores the second name in the buffer, assigns it to `name` when `std::cin >> name` is executed again, and prints the second name to standard output
+- 1-5: It is not a valid program as `x` in `cout << x << endl;` is not defined
+- 1-6: It stores the second name in the buffer, assigns it to `name` when `cin >> name` is executed again, and prints the second name to standard output
 - 2-6: The code outputs:
   ```
   1
@@ -60,14 +60,14 @@ Learn C++
     double d = f()[n];
 
     // Outputs 1
-    std::cout << d << std::endl;
+    cout << d << endl;
 
     return 0;
   }
   ```
 - 5-2: Execution time in seconds (average of 3 runs):
 
-  |Records|std::vector|std::list|
+  |Records|vector|list|
   |-|-|-|
   |10|0.0006430576667|0.000637815|
   |1000|0.04035813333|0.02703803333|
@@ -75,11 +75,11 @@ Learn C++
 - 5-5: `center()` is useful for [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics) that are indexed by a [Cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) and have a fixed width and height. A picture has these properties if it becomes pixelated after enlarging it
 - 5-6: Execution time in seconds (average of 3 runs):
 
-  |Records|std::vector erase()|std::vector insert() resize()|std::list erase()|std::list insert() resize()|
+  |Records|vector erase()|vector insert() resize()|list erase()|list insert() resize()|
   |-|-|-|-|-|
-  |10|0.0006430576667|`std::bad_alloc` exception|0.000637815|0.0006860083333|
-  |1000|0.04035813333|`std::bad_alloc` exception|0.02703803333|0.1547693333|
-  |10000|0.518863|`std::bad_alloc` exception|0.1394713333|11.76033333|
+  |10|0.0006430576667|`bad_alloc` exception|0.000637815|0.0006860083333|
+  |1000|0.04035813333|`bad_alloc` exception|0.02703803333|0.1547693333|
+  |10000|0.518863|`bad_alloc` exception|0.1394713333|11.76033333|
 - 5-7: When `frame()` is called, it:
   1. Gets the length of the longest element in `v` by calling `width()`
   1. Writes the top border
@@ -89,20 +89,20 @@ Learn C++
       1. Writes padding up to the length of the longest element
       1. Writes the right border
   1. Writes the bottom border
-- 5-8: The function would `throw` a `std::length_error` exception
+- 5-8: The function would `throw` a `length_error` exception
 - 6-3: The program fragment throws a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) error
 - 6-4: Fix the error in 6-3 by either initializing `v` with a fill constructor, or initializing `w` with a copy constructor. The first approach provides more flexibility by separating the initialization and copy steps. The disadvantage is slower performance as each element in `v` is initialized with `0`. The second approach is faster as each element in `u` is copied to `w` during initialization. The disadvantage is less flexibility in selecting the elements to copy
 - 6-7: Skipped as `GetFailStudents()` has been refactored and is not similar to `IsHomeworkDone()`. `GetFailStudents()` mutates `s` using [`stable_partition`](http://www.cplusplus.com/reference/algorithm/stable_partition/) and returns `container_type`, while `IsHomeworkDone()` does not mutate `s` and returns `bool`
 
 # takeaway
 
-- `std::cout << "hello world" << std::endl` writes `hello world` to the standard output stream as a [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+- `cout << "hello world" << endl` writes `hello world` to the standard output stream as a [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
 - `<<` is [left-associative](https://en.wikipedia.org/wiki/Operator_associativity)
 - Reading from the standard input stream [flushes](http://www.cplusplus.com/reference/ostream/flush-free/) the output buffer
-- `std::cin >> v` reads non-whitespace characters from the standard input stream into `v`
+- `cin >> v` reads non-whitespace characters from the standard input stream into `v`
 - Use `{}` when initializing variables to prevent conversions that lose information. Example: `int i = 1.2;` truncates `0.2` and saves `1` to `i`, while `int i {1.2};` throws an error
 - An [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)) is a property that is true at the start and end of a [block](https://en.wikipedia.org/wiki/Block_(programming)). It helps us to define precisely what we want and reduce the chance of errors
-- `std::string::size_type` is a type used to store the size of a [string](http://www.cplusplus.com/reference/string/string/)
+- `string::size_type` is a type used to store the size of a [string](http://www.cplusplus.com/reference/string/string/)
 - Loop invariants are expressed more clearly using `[0, rows)` asymmetric ranges
 - Time complexity of [`sort()`](http://www.cplusplus.com/reference/algorithm/sort/) is nlog(n)
 - Different methods for computing [quartiles](https://en.wikipedia.org/wiki/Quartile) yield different results
@@ -125,7 +125,7 @@ Learn C++
   Vector* pointer = &v;
 
   // Outputs 2
-  std::cout << pointer->size << std::endl;
+  cout << pointer->size << endl;
   ```
 - An advantage of the `vector` data structure is fast random access. A disadvantage is that it is expensive to add or delete elements that are not at the end of the `vector`
 - `()` is required in `(*iterator).name` as `.` has higher precedence than `*`. `*iterator.name` would throw a compilation error as `iterator` does not have a member `name`. The [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) `iterator->name` can be used as an abbreviation
@@ -150,7 +150,7 @@ Learn C++
 - `virtual int size() const = 0;` denotes a [virtual function](https://en.wikipedia.org/wiki/Virtual_function) in an abstract class. `= 0` denotes that a derived class must implement `size()`
 - A [virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) is an array of pointers used to invoke the appropriate method implementations at runtime
 - Use a [wrapper function](https://en.wikipedia.org/wiki/Wrapper_function) for error handling and calling other functions
-- Use [`std::unique_ptr`](http://www.cplusplus.com/reference/memory/unique_ptr/) to manage pointers. Example:
+- Use [`unique_ptr`](http://www.cplusplus.com/reference/memory/unique_ptr/) to manage pointers. Example:
   ```cpp
   void DoWork() {
     vector<unique_ptr<Shape>> v;
