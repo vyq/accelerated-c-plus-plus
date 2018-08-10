@@ -188,4 +188,4 @@ Learn C++
 # to-do
 
 - Read page 199 section 8.1.2 of Accelerated C++
-- Read page 91 section 4.3 of The C++ Programming Language
+- Read page 93 section 4.3.2 of The C++ Programming Language
