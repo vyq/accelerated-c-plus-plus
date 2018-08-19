@@ -3,8 +3,8 @@ standard = -std=c++17
 output = -o
 flags = $(compiler) $(standard) $(output)
 
-all: median
+all: main
 
-median:
-	$(flags) main.out main.cpp median.cpp
+main:
+	$(flags) main.out main.cpp student.cpp grade.cpp median.cpp split.cpp average.cpp
 

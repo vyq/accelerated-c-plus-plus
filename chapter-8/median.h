@@ -9,7 +9,7 @@ T ComputeMedian(std::vector<T> v) {
   size_type size {v.size()};
 
   if (size == 0)
-    throw std::domain_error("Cannot compute median of empty vector");
+    throw std::length_error("Cannot compute median of empty vector");
 
   sort(v.begin(), v.end());
 
