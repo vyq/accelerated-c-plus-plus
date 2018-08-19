@@ -6,5 +6,5 @@ flags = $(compiler) $(standard) $(output)
 all: median
 
 median:
-	$(flags) median.out median.cpp
+	$(flags) main.out main.cpp median.cpp
 

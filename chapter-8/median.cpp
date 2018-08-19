@@ -21,8 +21,3 @@ T ComputeMedian(vector<T> v) {
   return size % 2 == 0 ? (v[mid] + v[mid - 1]) / 2 : v[mid];
 }
 
-int main() {
-  vector<double> v {1, 2};
-
-  cout << ComputeMedian(v) << endl;
-}
