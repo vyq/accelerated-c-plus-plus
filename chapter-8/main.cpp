@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "median.cpp"
+#include "median.h"
 
 using namespace std;
 
