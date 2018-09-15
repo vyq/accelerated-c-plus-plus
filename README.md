@@ -184,6 +184,12 @@ Learn C++
 - A [variadic template](https://en.wikipedia.org/wiki/Variadic_template) is a [template](https://en.wikipedia.org/wiki/Template_(C%2B%2B)) that takes a variable number of arguments
 - Use [`random_device`](http://www.cplusplus.com/reference/random/random_device/) to generate non-deterministic random numbers
 - `template<class T>` is a template header that defines a template function. `T` denotes that the function will take a [type parameter](https://en.wikipedia.org/wiki/TypeParameter)
+- Iterator categories
+  - Sequential read access
+  - Sequential write access
+  - Sequential read and write access
+  - Reversible access
+  - Random access
 
 # to-do
 
